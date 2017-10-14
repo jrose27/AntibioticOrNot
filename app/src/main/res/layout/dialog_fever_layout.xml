@@ -38,7 +38,8 @@
                 android:layout_weight="1"
                 android:text="@string/ninety_eight_point_three_to_one_hundred_point_three"
                 android:textSize="18sp"
-                android:textColor="@color/colorPrimary"/>
+                android:buttonTint="@drawable/checkbox_edit"
+                android:textColor="@drawable/checkbox_edit"/>
 
             <CheckBox
                 android:id="@+id/secondFeverRangeCheckbox"
@@ -47,7 +48,8 @@
                 android:layout_weight="1"
                 android:text="@string/one_hundred_point_four_to_one_hundred_point_nine"
                 android:textSize="18sp"
-                android:textColor="@color/colorPrimary"/>
+                android:buttonTint="@drawable/checkbox_edit"
+                android:textColor="@drawable/checkbox_edit"/>
 
             <CheckBox
                 android:id="@+id/thirdFeverRangeCheckbox"
@@ -56,7 +58,8 @@
                 android:layout_weight="1"
                 android:text="@string/greater_than_one_hundred_and_one"
                 android:textSize="18sp"
-                android:textColor="@color/colorPrimary"/>
+                android:buttonTint="@drawable/checkbox_edit"
+                android:textColor="@drawable/checkbox_edit"/>
 
         </LinearLayout>
 

@@ -38,7 +38,8 @@
                 android:layout_weight="1"
                 android:text="@string/nasal_discharge_color_clear_text"
                 android:textSize="18sp"
-                android:textColor="@color/colorPrimary"/>
+                android:buttonTint="@drawable/checkbox_edit"
+                android:textColor="@drawable/checkbox_edit"/>
 
             <CheckBox
                 android:id="@+id/nasalDischargeColorYellowGreenCheckbox"
@@ -47,7 +48,8 @@
                 android:layout_weight="1"
                 android:text="@string/nasal_discharge_color_yellow_green_text"
                 android:textSize="18sp"
-                android:textColor="@color/colorPrimary"/>
+                android:buttonTint="@drawable/checkbox_edit"
+                android:textColor="@drawable/checkbox_edit"/>
 
         </LinearLayout>
 
