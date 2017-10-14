@@ -33,6 +33,7 @@
     <string name="start_button_text">Start</string>
     <string name="cancel_button_text">Cancel</string>
     <string name="confirm_button_text">Confirm</string>
+    <string name="done_button_text">Done</string>
 
    <!-- Fever Dialog -->
     <string name="fever_dialog_title_text">Fever</string>

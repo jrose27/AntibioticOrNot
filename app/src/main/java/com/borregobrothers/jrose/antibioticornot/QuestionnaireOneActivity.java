@@ -865,8 +865,9 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
         resultNoDialog.setTitle("You Do Not Need An Antibiotic!");
         resultNoDialog.show();
 
-        Button cancelButton, confirmButton;
-
+        Button doneButton;
+        /*
+        cancelButton
         cancelButton = (Button) resultNoDialog.findViewById(R.id.cancelButton);
         assert cancelButton != null;
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -892,20 +893,22 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                 resultNoDialog.cancel();
             }
         });
+        */
 
-        confirmButton = (Button) resultNoDialog.findViewById(R.id.confirmButton);
-        assert confirmButton != null;
-        confirmButton.setOnClickListener(new View.OnClickListener() {
+        doneButton = (Button) resultNoDialog.findViewById(R.id.confirmButton);
+        assert doneButton != null;
+        doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Log.v(TAG, "Confirm Button from Result Yes Dialog was Clicked!");
+                Log.v(TAG, "Done Button from Result Yes Dialog was Clicked!");
 
                 // User confirms so reset app
                 startActivity(new Intent(QuestionnaireOneActivity.this, TitleScreenActivity.class));
                 resultNoDialog.dismiss();
             }
         });
+
 
     }
 
@@ -919,8 +922,10 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
         resultYesAntibioticDialog.setTitle("You Do Need An Antibiotic!");
         resultYesAntibioticDialog.show();
 
-        Button cancelButton, confirmButton;
+        Button doneButton;
 
+        /*
+        cancelButton
         cancelButton = (Button) resultYesAntibioticDialog.findViewById(R.id.cancelButton);
         assert cancelButton != null;
         cancelButton.setOnClickListener(new View.OnClickListener() {
@@ -946,20 +951,21 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                 resultYesAntibioticDialog.cancel();
             }
         });
-
-        confirmButton = (Button) resultYesAntibioticDialog.findViewById(R.id.confirmButton);
-        assert confirmButton != null;
-        confirmButton.setOnClickListener(new View.OnClickListener() {
+*/
+        doneButton = (Button) resultYesAntibioticDialog.findViewById(R.id.confirmButton);
+        assert doneButton != null;
+        doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Log.v(TAG, "Confirm Button from Result Yes Dialog was Clicked!");
+                Log.v(TAG, "Done Button from Result Yes Dialog was Clicked!");
 
                 // User confirms so reset app
                 startActivity(new Intent(QuestionnaireOneActivity.this, TitleScreenActivity.class));
                 resultYesAntibioticDialog.dismiss();
             }
         });
+
 
     }
 

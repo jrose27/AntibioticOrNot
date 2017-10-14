@@ -42,21 +42,16 @@
             android:layout_weight="0.1"
             android:orientation="horizontal"
             android:layout_below="@id/antibioticLogoImage"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:gravity="center">
 
-            <Button
-            android:id="@+id/cancelButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/cancel_button_text" />
-
-            <Button
-            android:id="@+id/confirmButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/confirm_button_text"/>
+                <Button
+                    android:id="@+id/doneButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/done_button_text"
+                    android:paddingLeft="70dp"
+                    android:paddingRight="70dp"/>
 
         </LinearLayout>
 
