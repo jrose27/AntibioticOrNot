@@ -895,13 +895,13 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
         });
         */
 
-        doneButton = (Button) resultNoDialog.findViewById(R.id.confirmButton);
+        doneButton = (Button) resultNoDialog.findViewById(R.id.doneButton);
         assert doneButton != null;
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Log.v(TAG, "Done Button from Result Yes Dialog was Clicked!");
+                Log.v(TAG, "Done Button from Result No Dialog was Clicked!");
 
                 // User confirms so reset app
                 startActivity(new Intent(QuestionnaireOneActivity.this, TitleScreenActivity.class));
@@ -952,7 +952,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             }
         });
 */
-        doneButton = (Button) resultYesAntibioticDialog.findViewById(R.id.confirmButton);
+        doneButton = (Button) resultYesAntibioticDialog.findViewById(R.id.doneButton);
         assert doneButton != null;
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
