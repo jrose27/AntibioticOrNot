@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.borregobrothers.jrose.antibioticornot.QuestionnaireOneActivity">
+
+
+    <LinearLayout
+        android:id="@+id/selectionConformationContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:id="@+id/feverInfoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/selection_conformation_info_text"
+            android:textSize="24sp"
+            android:textColor="@color/colorPrimary"
+            android:textAlignment="center"
+            android:padding="10dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/selectionConformationContainer"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/yesButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/yes"
+            android:textSize="18sp"/>
+
+        <Button
+            android:id="@+id/noButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/no"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

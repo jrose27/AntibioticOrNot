@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.borregobrothers.jrose.antibioticornot.QuestionnaireOneActivity">
+
+
+    <LinearLayout
+        android:id="@+id/preExistingConditionsInfoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/preExistingConditionsInfoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pre_existing_conditions_info_text"
+            android:textSize="17sp"
+            android:textColor="@color/colorPrimary"
+            android:textAlignment="center"
+            android:padding="10dp"/>
+
+        <LinearLayout
+            android:id="@+id/firstChoicesPreExistingConditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/preExistingConditionsInfoText"
+            android:padding="10dp"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/pregnantPostpartumCheckbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/pregnant_or_two_weeks_postpartum"
+                android:textSize="17sp"
+                android:textColor="@color/colorPrimary"/>
+
+            <CheckBox
+                android:id="@+id/cancerCheckbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cancer"
+                android:textSize="17sp"
+                android:textColor="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondChoicesPreExistingConditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/firstChoicesPreExistingConditions"
+            android:padding="10dp"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/copdCheckbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/copd"
+                android:textSize="17sp"
+                android:textColor="@color/colorPrimary"/>
+
+            <CheckBox
+                android:id="@+id/cadCheckbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cad"
+                android:textSize="17sp"
+                android:textColor="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/thirdChoicesPreExistingConditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/secondChoicesPreExistingConditions"
+            android:padding="10dp"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/hivCheckbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/hiv"
+                android:textSize="17sp"
+                android:textColor="@color/colorPrimary"/>
+
+            <CheckBox
+                android:id="@+id/aidsCheckbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/aids"
+                android:textSize="17sp"
+                android:textColor="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fourthChoicesPreExistingConditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/thirdChoicesPreExistingConditions"
+            android:padding="10dp"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/recentUseOfAntibioticCheckbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/recent_use_of_antibiotics"
+                android:textSize="17sp"
+                android:textColor="@color/colorPrimary"/>
+
+            <CheckBox
+                android:id="@+id/recentHospitalizationCheckbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/recent_hospitalization"
+                android:textSize="17sp"
+                android:textColor="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fifthChoicesPreExistingConditions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/fourthChoicesPreExistingConditions"
+            android:padding="10dp"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/autoimmuneDiseaseCheckbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/autoimmune_disease"
+                android:textSize="17sp"
+                android:textColor="@color/colorPrimary"/>
+
+            <CheckBox
+                android:id="@+id/chronicSteroidUseCheckbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/chronic_steroid_use"
+                android:textSize="17sp"
+                android:textColor="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/preExistingConditionButtonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/preExistingConditionsInfoContainer"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cancel_button_text" />
+
+        <Button
+            android:id="@+id/confirmButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/confirm_button_text"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

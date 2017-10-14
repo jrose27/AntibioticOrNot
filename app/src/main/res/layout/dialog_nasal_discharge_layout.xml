@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.borregobrothers.jrose.antibioticornot.QuestionnaireOneActivity">
+
+
+    <LinearLayout
+        android:id="@+id/nasalDischargeColorInfoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nasalDischargeColorInfoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nasal_discharge_color_info_text"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary"
+            android:textAlignment="center"
+            android:padding="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/nasalDischargeColorInfoText"
+            android:padding="10dp"
+            android:gravity="center">
+
+            <CheckBox
+                android:id="@+id/nasalDischargeColorClearCheckbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/nasal_discharge_color_clear_text"
+                android:textSize="18sp"
+                android:textColor="@color/colorPrimary"/>
+
+            <CheckBox
+                android:id="@+id/nasalDischargeColorYellowGreenCheckbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/nasal_discharge_color_yellow_green_text"
+                android:textSize="18sp"
+                android:textColor="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/nasalDischargeColorInfoContainer"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/cancel_button_text" />
+
+        <Button
+            android:id="@+id/confirmButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/confirm_button_text"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

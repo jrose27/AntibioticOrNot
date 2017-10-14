@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">" Antibiotic Or Not"</string>
+
+    <!-- Text View Labels -->
+    <string name="fever_label_text">Fever</string>
+    <string name="cough_label_text">Cough</string>
+    <string name="sore_throat_hoarseness_label_text">Sore Throat or Hoarseness</string>
+    <string name="white_patches_in_throat_label_text">White Patches In Back of Throat</string>
+    <string name="facial_pain_label_text">Facial Pain</string>
+    <string name="body_ache_label_text">Body Ache</string>
+    <string name="sneezing_label_text">Sneezing</string>
+    <string name="nasal_discharge_label_text">Nasal Discharge</string>
+    <string name="post_nasal_drip_label_text">Post Nasal Drip</string>
+    <string name="chest_pain_label_text">Chest Pains</string>
+    <string name="shortness_of_breath_wheezing_label_text">Shortness of Breath or Wheezing</string>
+    <string name="neck_stiffness_label_text">Neck Stiffness</string>
+    <string name="tender_lymph_nodes">Tender Lymph Nodes</string>
+    <string name="fatigue_label_text">Fatigue</string>
+    <string name="symptoms_time_length_label_text">How long have your symptoms been present?</string>
+    <string name="pre_existing_conditions_label_text">Pre-existing Conditions</string>
+
+    <!-- Checkbox Selections Yes or No -->
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <!-- Symptoms Time Length -->
+    <string name="one_to_three_days">1 to 3 Days</string>
+    <string name="four_to_seven_days">4 to 7 Days</string>
+    <string name="more_than_seven_days">More Than 7 Days</string>
+
+    <!-- Button Strings -->
+    <string name="result_button_text">Result</string>
+    <string name="start_button_text">Start</string>
+    <string name="cancel_button_text">Cancel</string>
+    <string name="confirm_button_text">Confirm</string>
+
+   <!-- Fever Dialog -->
+    <string name="fever_dialog_title_text">Fever</string>
+    <string name="fever_info_text">Please select the appropriate range for your fever.</string>
+    <string name="ninety_eight_point_three_to_one_hundred_point_three">98.3 to 100.3</string>
+    <string name="one_hundred_point_four_to_one_hundred_point_nine">100.4 to 100.9</string>
+    <string name="greater_than_one_hundred_and_one">Greater than 101</string>
+
+    <!-- Nasal Discharge Color Dialog -->
+    <string name="nasal_discharge_color_dialog_title_text">Nasal Discharge Color</string>
+    <string name="nasal_discharge_color_info_text">What color is your nasal discharge?</string>
+    <string name="nasal_discharge_color_clear_text">Clear</string>
+    <string name="nasal_discharge_color_yellow_green_text">Yellow or Green</string>
+
+    <!-- Pre-existing Conditions Dialog -->
+    <string name="pre_existing_conditions_dialog_title_text">Pre-existing Conditions</string>
+    <string name="pre_existing_conditions_info_text">Please select any of the pre-existing conditions that apply to you?</string>
+    <string name="pregnant_or_two_weeks_postpartum">Pregnant or Two Weeks Postpartum</string>
+    <string name="cancer">Cancer</string>
+    <string name="copd">Chronic Obstructive Pulmonary Disease (COPD)</string>
+    <string name="cad">Coronary Artery Disease</string>
+    <string name="hiv">HIV</string>
+    <string name="aids">AIDS</string>
+    <string name="recent_use_of_antibiotics">Recent Use Of Antibiotics</string>
+    <string name="recent_hospitalization">Recent Hospitalization</string>
+    <string name="autoimmune_disease">Autoimmune Disease</string>
+    <string name="chronic_steroid_use">Chronic Steroid Use</string>
+
+    <!-- Selection Conformation Dialog -->
+    <string name="selection_conformation_info_text">Are you sure the selections you have made are correct?</string>
+    <string name="selection_dialog_title_text">Selection Conformation</string>
+
+
+</resources>
