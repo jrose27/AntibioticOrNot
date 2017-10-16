@@ -11,44 +11,55 @@
         android:id="@+id/selectionConformationContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="20dp">
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/feverTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/selection_dialog_title_text"
+            android:textSize="30sp"
+            android:textColor="@color/colorBackground"
+            android:textAlignment="center"
+            android:background="@color/colorPrimary"
+            android:padding="10dp"/>
 
         <TextView
             android:id="@+id/feverInfoText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/selection_conformation_info_text"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textColor="@color/colorPrimary"
             android:textAlignment="center"
             android:padding="10dp"/>
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/selectionConformationContainer"
-        android:padding="10dp">
 
-        <Button
-            android:id="@+id/yesButton"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/yes"
-            android:textSize="18sp"/>
+            android:orientation="horizontal"
+            android:layout_below="@id/selectionConformationContainer"
+            android:padding="10dp">
 
-        <Button
-            android:id="@+id/noButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/no"
-            android:textSize="18sp"/>
+            <Button
+                android:id="@+id/yesButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/yes"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"/>
+            <Button
+                android:id="@+id/noButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/no"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"/>
 
+        </LinearLayout>
     </LinearLayout>
-
 </RelativeLayout>

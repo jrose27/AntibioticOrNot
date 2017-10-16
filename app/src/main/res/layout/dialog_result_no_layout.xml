@@ -52,7 +52,9 @@
                 android:layout_height="wrap_content"
                 android:text="@string/done_button_text"
                 android:paddingLeft="70dp"
-                android:paddingRight="70dp"/>
+                android:paddingRight="70dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"/>
         </LinearLayout>
 
     </LinearLayout>

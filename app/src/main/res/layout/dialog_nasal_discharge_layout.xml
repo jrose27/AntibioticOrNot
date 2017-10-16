@@ -14,11 +14,22 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/nasalDischargeColorTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nasal_discharge_color_dialog_title_text"
+            android:textSize="30sp"
+            android:textColor="@color/colorBackground"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:background="@color/colorPrimary"/>
+
+        <TextView
             android:id="@+id/nasalDischargeColorInfoText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/nasal_discharge_color_info_text"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textColor="@color/colorPrimary"
             android:textAlignment="center"
             android:padding="10dp"/>
@@ -39,7 +50,8 @@
                 android:text="@string/nasal_discharge_color_clear_text"
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
-                android:textColor="@drawable/checkbox_edit"/>
+                android:textColor="@drawable/checkbox_edit"
+                android:layout_marginLeft="70dp"/>
 
             <CheckBox
                 android:id="@+id/nasalDischargeColorYellowGreenCheckbox"
@@ -67,14 +79,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/cancel_button_text" />
+            android:text="@string/cancel_button_text"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"/>
 
         <Button
             android:id="@+id/confirmButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/confirm_button_text"/>
+            android:text="@string/confirm_button_text"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"/>
 
     </LinearLayout>
 

@@ -21,8 +21,8 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
     private CheckBox feverYes, feverNo, coughYes, coughNo, soreThroatHoarsenessYes, soreThroatHoarsenessNo,
             whitePatchesYes, whitePatchesNo, facialPainYes, facialPainNo, bodyAcheYes, bodyAcheNo, sneezingYes, sneezingNo,
             nasalDischargeYes, nasalDischargeNo, postNasalDripYes, postNasalDripNo, shortnessOfBreathWheezingYes, shortnessOfBreathWheezingNo,
-            chestPainYes, chestPainNo, neckStiffnessYes, neckStiffnessNo, tenderLymphNodesYes, tenderLymphNodesNo, fatigueYes, fatigueNo, preExistingConditionsYes, 
-            preExistingConditionsNo, symptomsOneToThreeDays, symptomsFourToSevenDays, symptomsMoreThanSevenDays;
+            chestPainYes, chestPainNo, neckStiffnessYes, neckStiffnessNo, tenderLymphNodesYes, tenderLymphNodesNo, headacheYes, headacheNo, preExistingConditionsYes,
+            preExistingConditionsNo, symptomsLessThanSevenDays, symptomsMoreThanSevenDays;
 
     // Checkboxes for the fever dialog
     private CheckBox ninetyEightToOneHundredAndThree, oneHundredAndFourToOneHundredAndNine, greaterThanOneHundredAndOne;
@@ -555,18 +555,18 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                 The listener method disables the "yes" and "no" checkboxes if the fatigue "yes"
                 checkbox is selected and adds "yes" to the selectedCheckBox list.
          */
-        fatigueYes = (CheckBox) findViewById(R.id.fatigueYes);
-        assert fatigueYes != null;
-        fatigueYes.setOnClickListener(new View.OnClickListener() {
+        headacheYes = (CheckBox) findViewById(R.id.headacheYes);
+        assert headacheYes != null;
+        headacheYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                disable(fatigueYes, fatigueNo);
-                selectedCheckBox.add(fatigueYes);
-                notSelectedCheckBox.add(fatigueNo);
+                disable(headacheYes, headacheNo);
+                selectedCheckBox.add(headacheYes);
+                notSelectedCheckBox.add(headacheNo);
 
-                selectedCheckBoxStack.push(fatigueYes);
-                notSelectedCheckBoxStack.push(fatigueNo);
+                selectedCheckBoxStack.push(headacheYes);
+                notSelectedCheckBoxStack.push(headacheNo);
             }
         });
 
@@ -574,18 +574,18 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                 The listener method disables both the "yes" and the "no" checkboxes if
                 the cough "no" checkbox is selected and adds "no" to the selectedCheckBox list.
          */
-        fatigueNo= (CheckBox) findViewById(R.id.fatigueNo);
-        assert fatigueNo != null;
-        fatigueNo.setOnClickListener(new View.OnClickListener() {
+        headacheNo = (CheckBox) findViewById(R.id.headacheNo);
+        assert headacheNo != null;
+        headacheNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                disable(fatigueYes, fatigueNo);
-                selectedCheckBox.add(fatigueNo);
-                notSelectedCheckBox.add(fatigueYes);
+                disable(headacheYes, headacheNo);
+                selectedCheckBox.add(headacheNo);
+                notSelectedCheckBox.add(headacheYes);
 
-                selectedCheckBoxStack.push(fatigueNo);
-                notSelectedCheckBoxStack.push(fatigueYes);
+                selectedCheckBoxStack.push(headacheNo);
+                notSelectedCheckBoxStack.push(headacheYes);
             }
         });
 
@@ -629,59 +629,41 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
         });
 
         // Symptoms length of time
-        symptomsOneToThreeDays = (CheckBox) findViewById(R.id.oneToThreeDays);
-        assert symptomsOneToThreeDays != null;
-        symptomsOneToThreeDays.setOnClickListener(new View.OnClickListener() {
+        symptomsLessThanSevenDays = (CheckBox) findViewById(R.id.lessThanSevenDays);
+        assert symptomsLessThanSevenDays!= null;
+        symptomsLessThanSevenDays.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Log.v(TAG, "Pre-existing Conditions Yes Checkbox was Selected!");
-                disable(symptomsOneToThreeDays, symptomsFourToSevenDays, symptomsMoreThanSevenDays);
-                selectedCheckBox.add(symptomsOneToThreeDays);
-                notSelectedCheckBox.add(symptomsFourToSevenDays);
+                disable(symptomsLessThanSevenDays, symptomsMoreThanSevenDays);
+
+                selectedCheckBox.add(symptomsLessThanSevenDays);
                 notSelectedCheckBox.add(symptomsMoreThanSevenDays);
 
-                selectedCheckBoxStack.push(symptomsOneToThreeDays);
-                notSelectedCheckBoxStack.push(symptomsFourToSevenDays);
+                selectedCheckBoxStack.push(symptomsLessThanSevenDays);
                 notSelectedCheckBoxStack.push(symptomsMoreThanSevenDays);
             }
         });
 
-        symptomsFourToSevenDays = (CheckBox) findViewById(R.id.fourToSevenDays);
-        assert symptomsFourToSevenDays != null;
-        symptomsFourToSevenDays.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Log.v(TAG, "Pre-existing Conditions Yes Checkbox was Selected!");
-                disable(symptomsOneToThreeDays, symptomsFourToSevenDays, symptomsMoreThanSevenDays);
-                selectedCheckBox.add(symptomsFourToSevenDays);
-                notSelectedCheckBox.add(symptomsOneToThreeDays);
-                notSelectedCheckBox.add(symptomsMoreThanSevenDays);
-
-                selectedCheckBoxStack.push(symptomsFourToSevenDays);
-                notSelectedCheckBoxStack.push(symptomsOneToThreeDays);
-                notSelectedCheckBoxStack.push(symptomsMoreThanSevenDays);
-            }
-        });
-
+        // Symptoms length of time
         symptomsMoreThanSevenDays = (CheckBox) findViewById(R.id.moreThanSevenDays);
-        assert symptomsMoreThanSevenDays != null;
+        assert symptomsMoreThanSevenDays!= null;
         symptomsMoreThanSevenDays.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Log.v(TAG, "Pre-existing Conditions Yes Checkbox was Selected!");
-                disable(symptomsOneToThreeDays, symptomsFourToSevenDays, symptomsMoreThanSevenDays);
+                disable(symptomsLessThanSevenDays, symptomsMoreThanSevenDays);
+
                 selectedCheckBox.add(symptomsMoreThanSevenDays);
-                notSelectedCheckBox.add(symptomsOneToThreeDays);
-                notSelectedCheckBox.add(symptomsFourToSevenDays);
+                notSelectedCheckBox.add(symptomsLessThanSevenDays);
 
                 selectedCheckBoxStack.push(symptomsMoreThanSevenDays);
-                notSelectedCheckBoxStack.push(symptomsOneToThreeDays);
-                notSelectedCheckBoxStack.push(symptomsFourToSevenDays);
+                notSelectedCheckBoxStack.push(symptomsLessThanSevenDays);
             }
         });
+
 
         /*
                 Create "resultButton" to display the appropriate result screen
@@ -788,8 +770,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                         && selectedCheckBox.contains(nasalDischargeYes)
                         && selectedCheckBox.contains(colorYellowGreen)
                         && selectedCheckBox.contains(postNasalDripYes)
-                        && selectedCheckBox.contains(fatigueYes)
-                        && selectedCheckBox.contains(symptomsOneToThreeDays)) {
+                        && selectedCheckBox.contains(headacheYes)) {
 
                     selectionConformationDialog.dismiss();
                     resultNoDialog();
@@ -803,8 +784,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                         && selectedCheckBox.contains(nasalDischargeYes)
                         && selectedCheckBox.contains(colorYellowGreen)
                         && selectedCheckBox.contains(postNasalDripYes)
-                        && selectedCheckBox.contains(fatigueYes)
-                        && selectedCheckBox.contains(symptomsOneToThreeDays)) {
+                        && selectedCheckBox.contains(headacheYes)) {
 
                     selectionConformationDialog.dismiss();
                     resultNoDialog();
@@ -818,8 +798,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                         || selectedCheckBox.contains(nasalDischargeYes)
                         || selectedCheckBox.contains(colorYellowGreen)
                         || selectedCheckBox.contains(postNasalDripYes)
-                        || selectedCheckBox.contains(fatigueYes)
-                        || selectedCheckBox.contains(symptomsOneToThreeDays)) {
+                        || selectedCheckBox.contains(headacheYes)) {
                     selectionConformationDialog.dismiss();
                     resultNoDialog();
                     
@@ -975,7 +954,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
     private void feverDialog() {
         final Dialog feverDialog = new Dialog(this);
         feverDialog.setContentView(R.layout.dialog_fever_layout);
-        feverDialog.setTitle(R.string.fever_dialog_title_text);
+      //  feverDialog.setTitle(R.string.fever_dialog_title_text);
         feverDialog.show();
 
         ninetyEightToOneHundredAndThree = (CheckBox) feverDialog.findViewById(R.id.firstFeverRangeCheckbox);
@@ -1640,6 +1619,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             This methods disables ten checkboxes
     */
     private void disable(CheckBox cb1, CheckBox cb2, CheckBox cb3, CheckBox cb4, CheckBox cb5, CheckBox cb6, CheckBox cb7, CheckBox cb8, CheckBox cb9, CheckBox cb10) {
+
         cb1.setEnabled(false);
         cb2.setEnabled(false);
         cb3.setEnabled(false);

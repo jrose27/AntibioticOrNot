@@ -544,24 +544,24 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/fatigueContainer"
+            android:id="@+id/headacheContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center">
 
             <TextView
-                android:id="@+id/shortnessOfBreathLabel"
+                android:id="@+id/headacheLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/fatigue_label_text"
+                android:text="@string/headache_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
                 android:padding="10dp"/>
 
             <CheckBox
-                android:id="@+id/fatigueYes"
+                android:id="@+id/headacheYes"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.27"
@@ -572,7 +572,7 @@
                 android:padding="10dp"/>
 
             <CheckBox
-                android:id="@+id/fatigueNo"
+                android:id="@+id/headacheNo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.27"
@@ -643,27 +643,18 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center">
-                <CheckBox
-                    android:id="@+id/oneToThreeDays"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/one_to_three_days"
-                    android:buttonTint="@drawable/checkbox_edit"
-                    android:textColor="@drawable/checkbox_edit"
-                    android:textSize="18sp"
-                    android:padding="5dp"/>
 
                 <CheckBox
-                    android:id="@+id/fourToSevenDays"
+                    android:id="@+id/lessThanSevenDays"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/four_to_seven_days"
+                    android:text="@string/less_than_seven_days"
                     android:buttonTint="@drawable/checkbox_edit"
                     android:textColor="@drawable/checkbox_edit"
                     android:textSize="18sp"
-                    android:padding="5dp"/>
+                    android:padding="5dp"
+                    android:layout_marginLeft="80dp"/>
 
                 <CheckBox
                     android:id="@+id/moreThanSevenDays"
@@ -692,13 +683,13 @@
 
         <Button
             android:id="@+id/resultButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/result_button_text"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
-            android:paddingLeft="35dp"
-            android:paddingRight="35dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
             android:shadowColor="@color/colorPrimaryDark"/>
     </LinearLayout>
 

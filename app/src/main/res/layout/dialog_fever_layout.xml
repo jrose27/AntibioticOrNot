@@ -14,11 +14,22 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/feverDialogTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fever_dialog_title_text"
+            android:textSize="30sp"
+            android:textColor="@color/colorBackground"
+            android:textAlignment="center"
+            android:padding="10dp"
+            android:background="@color/colorPrimary"/>
+
+        <TextView
             android:id="@+id/feverInfoText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/fever_info_text"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textColor="@color/colorPrimary"
             android:textAlignment="center"
             android:padding="10dp"/>
@@ -37,9 +48,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/ninety_eight_point_three_to_one_hundred_point_three"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:buttonTint="@drawable/checkbox_edit"
-                android:textColor="@drawable/checkbox_edit"/>
+                android:textColor="@drawable/checkbox_edit"
+                android:layout_marginLeft="5dp"/>
 
             <CheckBox
                 android:id="@+id/secondFeverRangeCheckbox"
@@ -47,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/one_hundred_point_four_to_one_hundred_point_nine"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"/>
 
@@ -57,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/greater_than_one_hundred_and_one"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"/>
 
@@ -77,14 +89,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/cancel_button_text" />
+            android:text="@string/cancel_button_text"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/confirmButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/confirm_button_text"/>
+            android:text="@string/confirm_button_text"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"/>
 
     </LinearLayout>
 
