@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/start_button_text"
-                android:textSize="30sp"
+                android:textSize="18sp"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
                 android:paddingLeft="50dp"

@@ -21,7 +21,7 @@
             android:textSize="30sp"
             android:textColor="@color/colorBackground"
             android:textAlignment="center"
-            android:padding="10dp"
+            android:padding="15dp"
             android:background="@color/colorPrimary"/>
 
         <TextView

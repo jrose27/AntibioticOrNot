@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!-- Use a ListView to display the facts -->
+    <LinearLayout
+        android:id="@+id/factListViewContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="700dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/factListViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fact_list_title_text"
+            android:textSize="30sp"
+            android:textColor="@color/colorBackground"
+            android:textAlignment="center"
+            android:padding="15dp"
+            android:background="@color/colorPrimary"/>
+
+        <ListView
+            android:id="@+id/factListView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        </ListView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/factDoneButtonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/factListViewContainer"
+        android:padding="15dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/doneButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/done_button_text"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+</LinearLayout>

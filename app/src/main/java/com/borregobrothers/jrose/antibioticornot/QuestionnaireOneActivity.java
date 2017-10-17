@@ -5,9 +5,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -19,13 +23,13 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
     // Make all checkboxes global within the class
     // Checkboxes for "yes" and "no" of the main questions
     private CheckBox feverYes, feverNo, coughYes, coughNo, soreThroatHoarsenessYes, soreThroatHoarsenessNo,
-            whitePatchesYes, whitePatchesNo, facialPainYes, facialPainNo, bodyAcheYes, bodyAcheNo, sneezingYes, sneezingNo,
+            whitePatchesYes, whitePatchesNo, facialPainYes, facialPainNo, bodyAcheYes, bodyAcheNo, sneezingYes, sneezingNo, nasalCongestionYes, nasalCongestionNo,
             nasalDischargeYes, nasalDischargeNo, postNasalDripYes, postNasalDripNo, shortnessOfBreathWheezingYes, shortnessOfBreathWheezingNo,
             chestPainYes, chestPainNo, neckStiffnessYes, neckStiffnessNo, tenderLymphNodesYes, tenderLymphNodesNo, headacheYes, headacheNo, preExistingConditionsYes,
             preExistingConditionsNo, symptomsLessThanSevenDays, symptomsMoreThanSevenDays;
 
     // Checkboxes for the fever dialog
-    private CheckBox ninetyEightToOneHundredAndThree, oneHundredAndFourToOneHundredAndNine, greaterThanOneHundredAndOne;
+    private CheckBox lowFeverRange, highFeverRange;
 
     // Checkboxes for the nasal discharge dialog
     private CheckBox colorClear, colorYellowGreen;
@@ -318,13 +322,54 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             }
         });
 
+          /*
+            The listener method disables both the "yes" and the "no" checkbox if
+            nasal congestion "yes" checkbox is selected and adds "yes" to the selectedCheckBox list.
+         */
+        nasalCongestionYes = (CheckBox) findViewById(R.id.nasalCongestionYes);
+
+        assert nasalCongestionYes != null;
+        nasalCongestionYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.v(TAG, "Nasal Congestion Yes Checkbox was Selected!");
+
+                disable(nasalCongestionYes,nasalCongestionNo);
+                selectedCheckBox.add(nasalCongestionYes);
+                notSelectedCheckBox.add(nasalCongestionNo);
+
+                selectedCheckBoxStack.push(nasalCongestionYes);
+                notSelectedCheckBoxStack.push(nasalCongestionNo);
+            }
+        });
+
+        /*
+            The listener method disables both the "yes" and the "no" checkbox if
+            nasal congestion "no" checkbox is selected and adds "no" to the selectedCheckBox list.
+         */
+        nasalCongestionNo = (CheckBox) findViewById(R.id.nasalCongestionNo);
+        assert nasalCongestionNo != null;
+        nasalCongestionNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                disable(nasalCongestionYes,nasalCongestionNo);
+                selectedCheckBox.add(nasalCongestionNo);
+                notSelectedCheckBox.add(nasalCongestionYes);
+
+                selectedCheckBoxStack.push(nasalCongestionNo);
+                notSelectedCheckBoxStack.push(nasalCongestionYes);
+            }
+        });
+
         /*
                 The listener method displays an alert dialog if the "yes" checkbox for
                 nasal discharge is selected.  The method also disables both the "yes" and "no" checkboxes
                 and adds "yes" to the selectedCheckBox list.
          */
         nasalDischargeYes = (CheckBox) findViewById(R.id.nasalDischargeYes);
-        nasalDischargeNo = (CheckBox) findViewById(R.id.nasalDischargeNo);
+
         assert nasalDischargeYes != null;
         nasalDischargeYes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -345,6 +390,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             The listener method disables both the "yes" and the "no" checkbox if
             nasal discharge "no" checkbox is selected and adds "no" to the selectedCheckBox list.
          */
+        nasalDischargeNo = (CheckBox) findViewById(R.id.nasalDischargeNo);
         assert nasalDischargeNo != null;
         nasalDischargeNo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -721,89 +767,80 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                     Display the correct result screen based on the options chosen by the user
                 */
 
+                int numberOfItemsInList = selectedCheckBox.size();
+                switch (numberOfItemsInList) {
+
+                    case 1:
+                        // Create "onlySelectionMade" CheckBox and assign it to the first item in the list
+                        CheckBox onlySelectionMade = selectedCheckBox.get(0);
+
+                        // Definitely yes for further evaluation
+                        if (onlySelectionMade.equals(preExistingConditionsYes)) {
+
+                            selectionConformationDialog.dismiss();
+                            resultYesDialog();
+                        }
+
+                        // Definitely no antibiotic
+                        if (onlySelectionMade.equals(nasalCongestionYes)
+                                || onlySelectionMade.equals(postNasalDripYes)
+                                || onlySelectionMade.equals(coughYes)
+                                || onlySelectionMade.equals(soreThroatHoarsenessYes)
+                                || onlySelectionMade.equals(headacheYes)
+                                || onlySelectionMade.equals(facialPainYes)
+                                || onlySelectionMade.equals(bodyAcheYes)
+                                || onlySelectionMade.equals(feverNo) ) {
+
+                            selectionConformationDialog.dismiss();
+                            resultNoDialog();
+                        }
+                        break;
+
+                    case 2:
+
+                        // Definitely yes for further evaluation
+                        if ((selectedCheckBox.contains(feverYes) && selectedCheckBox.contains(highFeverRange)) ) {
+
+                            selectionConformationDialog.dismiss();
+                            resultYesDialog();
+                        }
+
+                        // Definitely no antibiotic
+                        if ((selectedCheckBox.contains(feverNo) && selectedCheckBox.contains(nasalCongestionYes))
+                                || (selectedCheckBox.contains(soreThroatHoarsenessYes) && selectedCheckBox.contains(nasalCongestionYes))
+                                || (selectedCheckBox.contains(soreThroatHoarsenessYes) && selectedCheckBox.contains(coughYes))
+                                || (selectedCheckBox.contains(coughYes) && selectedCheckBox.contains(nasalCongestionYes))
+                                || (selectedCheckBox.contains(coughYes) && selectedCheckBox.contains(sneezingYes))) {
+
+                            selectionConformationDialog.dismiss();
+                            resultNoDialog();
+                        }
+
+                        break;
+                    case 3:
+
+                }
+
                 /*
-                // Check the list is not empty
-                if (selectedCheckBox.isEmpty()) {
-                    selectionConformationDialog.dismiss();
+                if (itemsInCheckBoxList == 1) {
+
+                    // Create "onlySelectionMade" CheckBox and assign it to the first item in the list
+                    CheckBox onlySelectionMade = selectedCheckBox.get(0);
+
+                    // Definitely no antibiotic
+                    if (onlySelectionMade.equals(nasalCongestionYes)
+                            || onlySelectionMade.equals(coughYes)
+                            || onlySelectionMade.equals(soreThroatHoarsenessYes)
+                            || onlySelectionMade.equals(headacheYes)
+                            || onlySelectionMade.equals(facialPainYes)
+                            || onlySelectionMade.equals(bodyAcheYes)) {
+
+                        selectionConformationDialog.dismiss();
+                        resultNoDialog();
+                    }
+
                 }
                 */
-
-                /*
-                ArrayList<CheckBox> yesList = new ArrayList<CheckBox>();
-                yesList.add(feverYes);
-                yesList.add(greaterThanOneHundredAndOne);
-                yesList.add(shortnessOfBreathWheezingYes);
-                yesList.add(chestPainYes);
-                yesList.add(neckStiffnessYes);
-                yesList.add(tenderLymphNodesYes);
-                yesList.add(preExistingConditionsYes);
-                yesList.add(symptomsMoreThanSevenDays);
-
-
-                // Check selectedCheckBox list for yesList values
-                if (selectedCheckBox.equals(yesList)) {
-                    selectionConformationDialog.dismiss();
-                    resultYesDialog();
-                }
-                */
-
-                // Definitely yes for further evaluation
-                if ((selectedCheckBox.contains(feverYes) && selectedCheckBox.contains(greaterThanOneHundredAndOne))
-                        || selectedCheckBox.contains(shortnessOfBreathWheezingYes)
-                        || selectedCheckBox.contains(chestPainYes)
-                        || selectedCheckBox.contains(neckStiffnessYes)
-                        || selectedCheckBox.contains(tenderLymphNodesYes)
-                        || selectedCheckBox.contains(preExistingConditionsYes)
-                        || selectedCheckBox.contains(symptomsMoreThanSevenDays)) {
-
-                    selectionConformationDialog.dismiss();
-                    resultYesDialog();
-                }
-
-                // Definitely no antibiotic
-                if (selectedCheckBox.contains(feverNo)
-                        && selectedCheckBox.contains(coughYes)
-                        && selectedCheckBox.contains(soreThroatHoarsenessYes)
-                        && selectedCheckBox.contains(facialPainYes)
-                        && selectedCheckBox.contains(bodyAcheYes)
-                        && selectedCheckBox.contains(sneezingYes)
-                        && selectedCheckBox.contains(nasalDischargeYes)
-                        && selectedCheckBox.contains(colorYellowGreen)
-                        && selectedCheckBox.contains(postNasalDripYes)
-                        && selectedCheckBox.contains(headacheYes)) {
-
-                    selectionConformationDialog.dismiss();
-                    resultNoDialog();
-
-                } else if (selectedCheckBox.contains(feverNo)
-                        && selectedCheckBox.contains(coughYes)
-                        && selectedCheckBox.contains(soreThroatHoarsenessYes)
-                        && selectedCheckBox.contains(facialPainYes)
-                        && selectedCheckBox.contains(bodyAcheYes)
-                        && selectedCheckBox.contains(sneezingYes)
-                        && selectedCheckBox.contains(nasalDischargeYes)
-                        && selectedCheckBox.contains(colorYellowGreen)
-                        && selectedCheckBox.contains(postNasalDripYes)
-                        && selectedCheckBox.contains(headacheYes)) {
-
-                    selectionConformationDialog.dismiss();
-                    resultNoDialog();
-
-                } else if (selectedCheckBox.contains(feverNo)
-                        || selectedCheckBox.contains(coughYes)
-                        || selectedCheckBox.contains(soreThroatHoarsenessYes)
-                        || selectedCheckBox.contains(facialPainYes)
-                        || selectedCheckBox.contains(bodyAcheYes)
-                        || selectedCheckBox.contains(sneezingYes)
-                        || selectedCheckBox.contains(nasalDischargeYes)
-                        || selectedCheckBox.contains(colorYellowGreen)
-                        || selectedCheckBox.contains(postNasalDripYes)
-                        || selectedCheckBox.contains(headacheYes)) {
-                    selectionConformationDialog.dismiss();
-                    resultNoDialog();
-                    
-                }
-
             }
         });
 
@@ -845,34 +882,6 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
         resultNoDialog.show();
 
         Button doneButton;
-        /*
-        cancelButton
-        cancelButton = (Button) resultNoDialog.findViewById(R.id.cancelButton);
-        assert cancelButton != null;
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Log.v(TAG, "Cancel Button from the result yes dialog was selected!");
-
-                // User cancels so reset all check boxes
-                for (CheckBox selected : selectedCheckBox) {
-                    selected.setEnabled(true);
-                    selected.setChecked(false);
-                }
-
-                for (CheckBox notSelected : notSelectedCheckBox) {
-                    notSelected.setEnabled(true);
-                    notSelected.setChecked(false);
-                }
-
-                // The selected checkbox list and not selected checkbox list need to be cleared
-                selectedCheckBox = new ArrayList<CheckBox>();
-                notSelectedCheckBox = new ArrayList<CheckBox>();
-                resultNoDialog.cancel();
-            }
-        });
-        */
 
         doneButton = (Button) resultNoDialog.findViewById(R.id.doneButton);
         assert doneButton != null;
@@ -882,17 +891,54 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
                 Log.v(TAG, "Done Button from Result No Dialog was Clicked!");
 
-                // User confirms so reset app
-                startActivity(new Intent(QuestionnaireOneActivity.this, TitleScreenActivity.class));
                 resultNoDialog.dismiss();
+                displayAntibioticFactDialog();
             }
         });
 
 
     }
 
-    private void resultNeutralAntibioticDialog() {
+    private void displayAntibioticFactDialog() {
+        final Dialog antibioticFactDialog = new Dialog(this);
+        antibioticFactDialog.setContentView(R.layout.dialog_antibiotic_fact_layout);
+        antibioticFactDialog.show();
 
+        Toast.makeText(this, "Please scroll down to see all facts.", Toast.LENGTH_LONG).show();
+
+        // Create a string array and populate it with the string array from the "string.xml" file
+        String[] factArray = getResources().getStringArray(R.array.fact_array);
+
+        // Create an ArrayList to add the "factArray" to, this is to add the index number to the output.
+        ArrayList<String> factArrayList = new ArrayList<String>();
+
+        // Populate the "factArrayList" with facts from the "factArray"
+        for (int i = 0; i < factArray.length; i++) {
+            factArrayList.add( (i + 1) + ". " + factArray[i]);
+        }
+
+        //Initialize ArrayAdapter to pass to ListView
+                                        /*Context,             layout,             array or arrayList*/
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.custom_list_view, factArrayList);
+
+        // Create ListView object and link to reference in activity_main.xml
+        // Only need to link the ListView in onCreate
+        ListView factListView = (ListView) antibioticFactDialog.findViewById(R.id.factListView);
+        factListView.setAdapter(adapter); // Assign the ArrayAdapter to the ListView object
+
+        Button doneButton;
+        doneButton = (Button) antibioticFactDialog.findViewById(R.id.doneButton);
+        assert doneButton != null;
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.v(TAG, "Done Button from Result No Dialog was Clicked!");
+                // User confirms so reset app
+                startActivity(new Intent(QuestionnaireOneActivity.this, TitleScreenActivity.class));
+                antibioticFactDialog.dismiss();
+            }
+        });
     }
 
     private void resultYesDialog() {
@@ -939,9 +985,8 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
                 Log.v(TAG, "Done Button from Result Yes Dialog was Clicked!");
 
-                // User confirms so reset app
-                startActivity(new Intent(QuestionnaireOneActivity.this, TitleScreenActivity.class));
                 resultYesAntibioticDialog.dismiss();
+                displayAntibioticFactDialog();
             }
         });
 
@@ -957,59 +1002,42 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
       //  feverDialog.setTitle(R.string.fever_dialog_title_text);
         feverDialog.show();
 
-        ninetyEightToOneHundredAndThree = (CheckBox) feverDialog.findViewById(R.id.firstFeverRangeCheckbox);
-        assert ninetyEightToOneHundredAndThree != null;
-        ninetyEightToOneHundredAndThree.setOnClickListener(new View.OnClickListener() {
+        lowFeverRange = (CheckBox) feverDialog.findViewById(R.id.lowFeverRangeCheckBox);
+        assert lowFeverRange != null;
+        lowFeverRange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Log.v(TAG, "98.3 - 100.3 was selected.");
-                disable(ninetyEightToOneHundredAndThree, oneHundredAndFourToOneHundredAndNine, greaterThanOneHundredAndOne);
-                selectedCheckBox.add(ninetyEightToOneHundredAndThree);
-                notSelectedCheckBox.add(oneHundredAndFourToOneHundredAndNine);
-                notSelectedCheckBox.add(greaterThanOneHundredAndOne);
+                Log.v(TAG, "Low Fever Range was selected.");
 
-                selectedCheckBoxStack.push(ninetyEightToOneHundredAndThree);
-                notSelectedCheckBoxStack.push(oneHundredAndFourToOneHundredAndNine);
-                notSelectedCheckBoxStack.push(greaterThanOneHundredAndOne);
+                disable(lowFeverRange, highFeverRange);
+                selectedCheckBox.add(lowFeverRange);
+                notSelectedCheckBox.add(highFeverRange);
+
+                selectedCheckBoxStack.push(lowFeverRange);
+                notSelectedCheckBoxStack.push(highFeverRange);
+
             }
         });
 
-        oneHundredAndFourToOneHundredAndNine = (CheckBox) feverDialog.findViewById(R.id.secondFeverRangeCheckbox);
-        assert oneHundredAndFourToOneHundredAndNine != null;
-        oneHundredAndFourToOneHundredAndNine.setOnClickListener(new View.OnClickListener() {
+        highFeverRange = (CheckBox) feverDialog.findViewById(R.id.highFeverRangeCheckBox);
+        assert highFeverRange != null;
+        highFeverRange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Log.v(TAG, "100.4 - 100.9 was selected.");
-                disable(ninetyEightToOneHundredAndThree, oneHundredAndFourToOneHundredAndNine, greaterThanOneHundredAndOne);
-                selectedCheckBox.add(oneHundredAndFourToOneHundredAndNine);
-                notSelectedCheckBox.add(ninetyEightToOneHundredAndThree);
-                notSelectedCheckBox.add(greaterThanOneHundredAndOne);
+                Log.v(TAG, "High Fever Range was selected.");
 
-                selectedCheckBoxStack.push(oneHundredAndFourToOneHundredAndNine);
-                notSelectedCheckBoxStack.push(ninetyEightToOneHundredAndThree);
-                notSelectedCheckBoxStack.push(greaterThanOneHundredAndOne);
+                disable(lowFeverRange, highFeverRange);
+                selectedCheckBox.add(highFeverRange);
+                notSelectedCheckBox.add(lowFeverRange);
+
+                selectedCheckBoxStack.push(highFeverRange);
+                notSelectedCheckBoxStack.push(lowFeverRange);
+
             }
         });
 
-        greaterThanOneHundredAndOne = (CheckBox) feverDialog.findViewById(R.id.thirdFeverRangeCheckbox);
-        assert greaterThanOneHundredAndOne != null;
-        greaterThanOneHundredAndOne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Log.v(TAG, "100.4 - 100.9 was selected.");
-                disable(ninetyEightToOneHundredAndThree, oneHundredAndFourToOneHundredAndNine, greaterThanOneHundredAndOne);
-                selectedCheckBox.add(greaterThanOneHundredAndOne);
-                notSelectedCheckBox.add(ninetyEightToOneHundredAndThree);
-                notSelectedCheckBox.add(oneHundredAndFourToOneHundredAndNine);
-
-                selectedCheckBoxStack.push(greaterThanOneHundredAndOne);
-                notSelectedCheckBoxStack.push(ninetyEightToOneHundredAndThree);
-                notSelectedCheckBoxStack.push(oneHundredAndFourToOneHundredAndNine);
-            }
-        });
         Button cancelButton, confirmButton;
 
         cancelButton = (Button) feverDialog.findViewById(R.id.cancelButton);
@@ -1024,16 +1052,13 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                         Remove the added CheckBoxes from both the "selected" and
                             "notSelected" lists if "feverYes" and/or a fever range are selected.
                  */
-                if(selectedCheckBox.contains(feverYes) && (selectedCheckBox.contains(greaterThanOneHundredAndOne) || selectedCheckBox.contains(ninetyEightToOneHundredAndThree)
-                        || selectedCheckBox.contains(oneHundredAndFourToOneHundredAndNine))) {
+                if (selectedCheckBox.contains(feverYes) && (selectedCheckBox.contains(lowFeverRange) || selectedCheckBox.contains(highFeverRange))) {
 
                     for (int i = 1, n = selectedCheckBox.size(); i < 3 ; i++) {
                         selectedCheckBox.remove(n - i);
+                        notSelectedCheckBox.remove(n - i);
                     }
 
-                    for (int i = 1, n = notSelectedCheckBox.size(); i < 4 ; i++) {
-                       notSelectedCheckBox.remove(n - i);
-                    }
 
                 } else if (selectedCheckBox.contains(feverYes)) {
 
@@ -1043,18 +1068,13 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                     }
                 }
 
-
                   /*
                         Check the selectedCheckBoxStack list for "feverYes" and either of the available choices
                  */
-                if (selectedCheckBoxStack.contains(feverYes) && (selectedCheckBoxStack.contains(greaterThanOneHundredAndOne) || selectedCheckBoxStack.contains(ninetyEightToOneHundredAndThree)
-                        || selectedCheckBoxStack.contains(oneHundredAndFourToOneHundredAndNine))) {
+                if (selectedCheckBoxStack.contains(feverYes) && (selectedCheckBoxStack.contains(lowFeverRange) || selectedCheckBoxStack.contains(highFeverRange))) {
 
                     for (int i = 1, n = selectedCheckBoxStack.size(); i < 3 ; i++) {
                         selectedCheckBoxStack.remove(n - i);
-                    }
-
-                    for (int i = 1, n = notSelectedCheckBoxStack.size(); i < 4 ; i++) {
                         notSelectedCheckBoxStack.remove(n - i);
                     }
 
@@ -1101,7 +1121,6 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
     private void nasalDischargeColorDialog() {
         final Dialog nasalDischargeDialog = new Dialog(this);
         nasalDischargeDialog.setContentView(R.layout.dialog_nasal_discharge_layout);
-        nasalDischargeDialog.setTitle(R.string.nasal_discharge_color_dialog_title_text);
         nasalDischargeDialog.show();
 
         // Set up Listeners for the nasal discharge color
@@ -1157,21 +1176,21 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
 
                 if (selectedCheckBox.contains(nasalDischargeYes)) {
-                    // Remove "nasalDischargeYes" and nasal discharge choice, two items total
+                    // Remove "nasalDischargeYes", one item total
+                    // Remove "nasalDischargeNo", one item total
                     for (int i = 1, n = selectedCheckBox.size(); i < 2 ; i++) {
                         selectedCheckBox.remove(n - i);
-                    }
-                    // Remove "preExistingNo" and pre existing choices not selected, ten items total
-                    for (int i = 1, n = notSelectedCheckBox.size(); i < 2 ; i++) {
+
                         notSelectedCheckBox.remove(n - i);
                     }
+
+
                 } else if (selectedCheckBox.contains(nasalDischargeYes) && (selectedCheckBox.contains(colorClear) || selectedCheckBox.contains(colorYellowGreen))) {
                     // Remove "nasalDischargeYes" and nasal discharge choice, two items total
+                    // Remove "nasalDischargeNo" and nasal discharge choice not selected, two items total
                     for (int i = 1, n = selectedCheckBox.size(); i < 3 ; i++) {
                         selectedCheckBox.remove(n - i);
-                    }
-                    // Remove "preExistingNo" and pre existing choices not selected, ten items total
-                    for (int i = 1, n = notSelectedCheckBox.size(); i < 3 ; i++) {
+
                         notSelectedCheckBox.remove(n - i);
                     }
                 }

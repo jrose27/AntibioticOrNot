@@ -22,7 +22,7 @@
             android:textColor="@color/colorBackground"
             android:textAlignment="center"
             android:background="@color/colorPrimary"
-            android:padding="10dp"/>
+            android:padding="15dp"/>
 
         <TextView
             android:id="@+id/feverInfoText"

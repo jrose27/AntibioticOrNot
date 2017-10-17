@@ -24,7 +24,6 @@
     <string name="no">No</string>
 
     <!-- Symptoms Time Length -->
-    <string name="one_to_three_days">1 to 3 Days</string>
     <string name="less_than_seven_days">Less Than 7 Days</string>
     <string name="more_than_seven_days">More Than 7 Days</string>
 
@@ -38,9 +37,8 @@
    <!-- Fever Dialog -->
     <string name="fever_dialog_title_text">Fever Range Selection</string>
     <string name="fever_info_text">Please select the appropriate range for your fever.</string>
-    <string name="ninety_eight_point_three_to_one_hundred_point_three">98.3 to 100.3</string>
-    <string name="one_hundred_point_four_to_one_hundred_point_nine">100.4 to 100.9</string>
-    <string name="greater_than_one_hundred_and_one">Greater than 101</string>
+    <string name="low_fever_range">Less Than or Equal to 100.4</string>
+    <string name="high_fever_range">Greater Than 100.4</string>
 
     <!-- Nasal Discharge Color Dialog -->
     <string name="nasal_discharge_color_dialog_title_text">Nasal Discharge Color</string>
@@ -65,6 +63,41 @@
     <!-- Selection Conformation Dialog -->
     <string name="selection_conformation_info_text">Are you sure the selections you have made are correct?</string>
     <string name="selection_dialog_title_text">Selection Conformation</string>
+    <string name="nasal_congestion_label_text">Nasal Congestion</string>
 
+    <!-- Antibiotic Facts Dialog -->
+    <string name="fact_list_title_text">Antibiotic Awareness Facts</string>
+    <string name="fact_one">Antibiotics will give you terrible gas sometimes.</string>
+    <string name="fact_two">Antibiotics can kill the good bacteria in your gut disrupting your chi and throwing your body out of symbiotic balance.</string>
+    <string name="fact_three">Antibiotic over use is going to plague us all the fatter and weaker we become as a society.</string>
+    <string name="fact_four">If you smell like a goat, take a bath!</string>
+    <string name="fact_five">Don\'t eat yellow snow.</string>
+    <string name="fact_six">Antibiotic overuse is responsible for the evolution of super bugs.</string>
+    <string name="fact_seven">Your gut is responsible for properly processing nutrients from food that nourish your body.</string>
+    <string name="fact_eight">If your faith in Jesus is strong enough antibiotics are pointless.</string>
+    <string name="fact_nine">Antibiotics are effective at eliminating bacteria that cause illness.</string>
+    <string name="fact_ten">Antibiotics are ineffective at eliminating viruses that cause illness.</string>
+    <string name="fact_eleven">Antibiotics are bad.</string>
+    <string name="fact_twelve">Antibiotics are good.</string>
+    <string name="fact_thirteen">Antibiotics should be used in moderation.</string>
+
+    <!-- A string array to hold all the facts -->
+    <string-array name="fact_array">
+
+        <item>@string/fact_one</item>
+        <item>@string/fact_two</item>
+        <item>@string/fact_three</item>
+        <item>@string/fact_four</item>
+        <item>@string/fact_five</item>
+        <item>@string/fact_six</item>
+        <item>@string/fact_seven</item>
+        <item>@string/fact_eight</item>
+        <item>@string/fact_nine</item>
+        <item>@string/fact_ten</item>
+        <item>@string/fact_eleven</item>
+        <item>@string/fact_twelve</item>
+        <item>@string/fact_thirteen</item>
+
+    </string-array>
 
 </resources>

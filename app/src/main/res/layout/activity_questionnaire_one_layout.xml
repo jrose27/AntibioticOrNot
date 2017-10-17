@@ -32,7 +32,7 @@
                 android:text="@string/fever_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/feverYes"
@@ -43,7 +43,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/feverNo"
@@ -54,7 +54,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
         </LinearLayout>
 
@@ -74,7 +74,7 @@
                 android:text="@string/cough_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/coughYes"
@@ -85,7 +85,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/coughNo"
@@ -96,7 +96,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -114,7 +114,7 @@
                 android:text="@string/sore_throat_hoarseness_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/soreThroatHoarsenessYes"
@@ -125,7 +125,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/soreThroatHoarsenessNo"
@@ -136,7 +136,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -155,7 +155,7 @@
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/whitePatchesInThroatYes"
@@ -166,7 +166,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/whitePatchesInThroatNo"
@@ -177,7 +177,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -195,7 +195,7 @@
                 android:text="@string/facial_pain_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/facialPainYes"
@@ -206,7 +206,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/facialPainNo"
@@ -217,7 +217,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -235,7 +235,7 @@
                 android:text="@string/body_ache_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/bodyAcheYes"
@@ -246,7 +246,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/bodyAcheNo"
@@ -257,7 +257,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -275,7 +275,7 @@
                 android:text="@string/sneezing_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/sneezingYes"
@@ -286,7 +286,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/sneezingNo"
@@ -297,9 +297,48 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/nasalCongestionContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/nasalCongestionLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/nasal_congestion_label_text"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:padding="8dp"/>
+
+            <CheckBox
+                android:id="@+id/nasalCongestionYes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.27"
+                android:text="@string/yes"
+                android:textSize="18sp"
+                android:buttonTint="@drawable/checkbox_edit"
+                android:textColor="@drawable/checkbox_edit"
+                android:padding="8dp"/>
+
+            <CheckBox
+                android:id="@+id/nasalCongestionNo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.27"
+                android:text="@string/no"
+                android:textSize="18sp"
+                android:buttonTint="@drawable/checkbox_edit"
+                android:textColor="@drawable/checkbox_edit"
+                android:padding="8dp"/>
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/nasalDischargeContainer"
             android:layout_width="match_parent"
@@ -315,7 +354,7 @@
                 android:text="@string/nasal_discharge_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/nasalDischargeYes"
@@ -326,7 +365,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/nasalDischargeNo"
@@ -337,9 +376,8 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
-
 
         <LinearLayout
             android:id="@+id/postNasalDripContainer"
@@ -356,7 +394,7 @@
                 android:text="@string/post_nasal_drip_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/postNasalDripYes"
@@ -367,7 +405,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/postNasalDripNo"
@@ -378,7 +416,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -396,7 +434,7 @@
                 android:text="@string/shortness_of_breath_wheezing_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/shortnessOfBreathWheezingYes"
@@ -407,7 +445,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/shortnessOfBreathWheezingNo"
@@ -418,7 +456,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -436,7 +474,7 @@
                 android:text="@string/chest_pain_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/chestPainYes"
@@ -447,7 +485,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/chestPainNo"
@@ -458,7 +496,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -476,7 +514,7 @@
                 android:text="@string/neck_stiffness_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/neckStiffnessYes"
@@ -487,7 +525,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/neckStiffnessNo"
@@ -499,7 +537,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -517,7 +555,7 @@
                 android:text="@string/tender_lymph_nodes"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/tenderLymphNodesYes"
@@ -528,7 +566,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/tenderLymphNodesNo"
@@ -540,7 +578,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -558,7 +596,7 @@
                 android:text="@string/headache_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/headacheYes"
@@ -569,7 +607,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/headacheNo"
@@ -581,7 +619,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -598,7 +636,7 @@
                 android:text="@string/pre_existing_conditions_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/preExistingConditionsYes"
@@ -609,7 +647,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <CheckBox
                 android:id="@+id/preExistingConditionsNo"
@@ -620,7 +658,7 @@
                 android:textSize="18sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -636,7 +674,7 @@
                 android:text="@string/symptoms_time_length_label_text"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                android:padding="10dp"/>
+                android:padding="8dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
