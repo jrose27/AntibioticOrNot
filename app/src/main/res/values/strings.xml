@@ -37,8 +37,8 @@
    <!-- Fever Dialog -->
     <string name="fever_dialog_title_text">Fever Range Selection</string>
     <string name="fever_info_text">Please select the appropriate range for your fever.</string>
-    <string name="low_fever_range">Less Than or Equal to 100.4</string>
-    <string name="high_fever_range">Greater Than 100.4</string>
+    <string name="low_fever_range">Less Than 100.4</string>
+    <string name="high_fever_range">Greater Than or Equal 100.4</string>
 
     <!-- Nasal Discharge Color Dialog -->
     <string name="nasal_discharge_color_dialog_title_text">Nasal Discharge Color</string>
@@ -50,14 +50,12 @@
     <string name="pre_existing_conditions_dialog_title_text">Pre-existing Conditions</string>
     <string name="pre_existing_conditions_info_text">Please select any of the pre-existing conditions that apply to you?</string>
     <string name="pregnant_or_two_weeks_postpartum">Pregnant or Two Weeks Postpartum</string>
-    <string name="cancer">Cancer</string>
+    <string name="cancer">Active Cancer</string>
     <string name="copd">Chronic Obstructive Pulmonary Disease (COPD)</string>
-    <string name="cad">Coronary Artery Disease</string>
     <string name="hiv">HIV</string>
     <string name="aids">AIDS</string>
     <string name="recent_use_of_antibiotics">Recent Use Of Antibiotics</string>
     <string name="recent_hospitalization">Recent Hospitalization</string>
-    <string name="autoimmune_disease">Autoimmune Disease</string>
     <string name="chronic_steroid_use">Chronic Steroid Use</string>
 
     <!-- Selection Conformation Dialog -->
@@ -67,13 +65,13 @@
 
     <!-- Antibiotic Facts Dialog -->
     <string name="fact_list_title_text">Antibiotic Awareness Facts</string>
-    <string name="fact_one">Antibiotics will give you terrible gas sometimes.</string>
-    <string name="fact_two">Antibiotics can kill the good bacteria in your gut disrupting your chi and throwing your body out of symbiotic balance.</string>
-    <string name="fact_three">Antibiotic over use is going to plague us all the fatter and weaker we become as a society.</string>
-    <string name="fact_four">If you smell like a goat, take a bath!</string>
-    <string name="fact_five">Don\'t eat yellow snow.</string>
-    <string name="fact_six">Antibiotic overuse is responsible for the evolution of super bugs.</string>
-    <string name="fact_seven">Your gut is responsible for properly processing nutrients from food that nourish your body.</string>
+    <string name="fact_one">1. Antibiotics will give you terrible gas sometimes.</string>
+    <string name="fact_two">2. Antibiotics can kill the good bacteria in your gut disrupting your chi and throwing your body out of symbiotic balance.</string>
+    <string name="fact_three">3. Antibiotic over use is going to plague us all the fatter and weaker we become as a society.</string>
+    <string name="fact_four">4. If you smell like a goat, take a bath!</string>
+    <string name="fact_five">5. Don\'t eat yellow snow.</string>
+    <string name="fact_six">6. Antibiotic overuse is responsible for the evolution of super bugs.</string>
+    <string name="fact_seven">7. Your gut is responsible for properly processing nutrients from food that nourish your body.</string>
     <string name="fact_eight">If your faith in Jesus is strong enough antibiotics are pointless.</string>
     <string name="fact_nine">Antibiotics are effective at eliminating bacteria that cause illness.</string>
     <string name="fact_ten">Antibiotics are ineffective at eliminating viruses that cause illness.</string>

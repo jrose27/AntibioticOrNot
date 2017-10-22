@@ -13,9 +13,14 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Stack;
 
-
+/*
+        Author: John Rose
+        Date: October 2017
+        Class is for the main activity of the antibiotic awareness app.
+        It contains six dialogs implemented in methods and after the onCreate method.
+        The onCreate methods contains all listener methods for the checkboxes selected.
+ */
 public class QuestionnaireOneActivity extends AppCompatActivity {
 
     private final static String TAG = " Look for StUpId --> ";
@@ -35,14 +40,13 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
     private CheckBox colorClear, colorYellowGreen;
 
     // Checkboxes for pre-existing conditions
-    private CheckBox pregnantOrTwoWeeksPostpartum, cancer, copd, cad, hiv, aids, recentUseOfAntibiotic, recentHospitalization, autoimmuneDisease, chronicSteroidUse;
+    private CheckBox pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse;
 
-    // Make a ArrayList to hold all the values of the selected checkboxes
-    private ArrayList<CheckBox> selectedCheckBox = new ArrayList<CheckBox>();
-    private ArrayList<CheckBox> notSelectedCheckBox = new ArrayList<CheckBox>();
+    // Make an ArrayList to hold all the values of the selected checkboxes
+    private ArrayList<CheckBox> selectedCheckBoxList = new ArrayList<CheckBox>();
 
-    private Stack<CheckBox> selectedCheckBoxStack = new Stack<CheckBox>();
-    private Stack<CheckBox> notSelectedCheckBoxStack = new Stack<CheckBox>();
+    // Make an ArrayList to hold all the values of the checkboxes not selected
+    private ArrayList<CheckBox> notSelectedCheckBoxList = new ArrayList<CheckBox>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +56,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
         /*
                 The listener method displays the fever alert dialog if the "yes" checkbox for
                 fever is selected. The method also disables both the "yes" and "no" checkboxes
-                and adds "yes" to the selectedCheckBox list.
+                and adds "yes" to the selectedCheckBoxList list.
          */
         feverYes = (CheckBox) findViewById(R.id.feverYes);
         assert feverYes != null;
@@ -60,19 +64,15 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                feverDialog();
-                disable(feverYes, feverNo);
-                selectedCheckBox.add(feverYes);
-                notSelectedCheckBox.add(feverNo);
+                createFeverDialog();
+                addCheckBox(feverYes, feverNo, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(feverYes);
-                notSelectedCheckBoxStack.push(feverNo);
             }
         });
 
         /*
                 The listener method disables both the "yes" and  "no" checkboxes if
-                the fever "no" checkbox is selected  and adds "no" to the selectedCheckBox list.
+                the fever "no" checkbox is selected  and adds "no" to the selectedCheckBoxList list.
          */
         feverNo = (CheckBox) findViewById(R.id.feverNo);
         assert feverNo != null;
@@ -80,19 +80,15 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(feverYes,feverNo);
-                selectedCheckBox.add(feverNo);
-                notSelectedCheckBox.add(feverYes);
+                addCheckBox(feverNo, feverYes, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(feverNo);
-                notSelectedCheckBoxStack.push(feverYes);
             }
         });
 
 
         /*
                 The listener method disables the "yes" and "no" checkboxes if the cough "yes"
-                checkbox is selected and adds "yes" to the selectedCheckBox list.
+                checkbox is selected and adds "yes" to the selectedCheckBoxList list.
          */
         coughYes = (CheckBox) findViewById(R.id.coughYes);
         assert coughYes != null;
@@ -100,18 +96,14 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(coughYes, coughNo);
-                selectedCheckBox.add(coughYes);
-                notSelectedCheckBox.add(coughNo);
+                addCheckBox(coughYes, coughNo, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(coughYes);
-                notSelectedCheckBoxStack.push(coughNo);
             }
         });
 
         /*
                 The listener method disables both the "yes" and the "no" checkboxes if
-                the cough "no" checkbox is selected and adds "no" to the selectedCheckBox list.
+                the cough "no" checkbox is selected and adds "no" to the selectedCheckBoxList list.
          */
         coughNo = (CheckBox) findViewById(R.id.coughNo);
         assert coughNo != null;
@@ -119,19 +111,15 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(coughYes,coughNo);
-                selectedCheckBox.add(coughNo);
-                notSelectedCheckBox.add(coughYes);
+                addCheckBox(coughNo, coughYes, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(coughNo);
-                notSelectedCheckBoxStack.push(coughYes);
             }
         });
 
 
         /*
                 The listener method disables the "yes" and "no" checkboxes if the sore throat
-                 hoarseness "yes" checkbox is selected and adds "yes" to the selectedCheckBox list.
+                 hoarseness "yes" checkbox is selected and adds "yes" to the selectedCheckBoxList list.
          */
         soreThroatHoarsenessYes = (CheckBox) findViewById(R.id.soreThroatHoarsenessYes);
         assert soreThroatHoarsenessYes != null;
@@ -139,19 +127,16 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(soreThroatHoarsenessYes, soreThroatHoarsenessNo);
-                selectedCheckBox.add(soreThroatHoarsenessYes);
-                notSelectedCheckBox.add(soreThroatHoarsenessNo);
+                addCheckBox(soreThroatHoarsenessYes, soreThroatHoarsenessNo, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(soreThroatHoarsenessYes);
-                notSelectedCheckBoxStack.push(soreThroatHoarsenessNo);
+
             }
         });
 
         /*
                 The listener method disable both the "yes" and the "no" checkbox if
                 the sore throat hoarseness "no" checkbox is selected and adds "no"
-                to the selectedCheckBox list.
+                to the selectedCheckBoxList list.
          */
         soreThroatHoarsenessNo = (CheckBox) findViewById(R.id.soreThroatHoarsenessNo);
         assert soreThroatHoarsenessNo != null;
@@ -159,18 +144,14 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(soreThroatHoarsenessYes, soreThroatHoarsenessNo);
-                selectedCheckBox.add(soreThroatHoarsenessNo);
-                notSelectedCheckBox.add(soreThroatHoarsenessYes);
+                addCheckBox(soreThroatHoarsenessNo, soreThroatHoarsenessYes, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(soreThroatHoarsenessNo);
-                notSelectedCheckBoxStack.push(soreThroatHoarsenessYes);
             }
         });
 
         /*
                 The listener method disables the "yes" and "no" checkboxes if the white patches
-                "yes" checkbox is selected and adds "yes" to the selectedCheckBox list.
+                "yes" checkbox is selected and adds "yes" to the selectedCheckBoxList list.
          */
         whitePatchesYes = (CheckBox) findViewById(R.id.whitePatchesInThroatYes);
         assert whitePatchesYes != null;
@@ -178,18 +159,14 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(whitePatchesYes, whitePatchesNo);
-                selectedCheckBox.add(whitePatchesYes);
-                notSelectedCheckBox.add(whitePatchesNo);
+                addCheckBox(whitePatchesYes, whitePatchesNo, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(whitePatchesYes);
-                notSelectedCheckBoxStack.push(whitePatchesNo);
             }
         });
 
         /*
                 The listener method disables both the "yes" and the "no" checkboxes if
-                the white patches "no" checkbox is selected and adds "no" to the selectedCheckBox list.
+                the white patches "no" checkbox is selected and adds "no" to the selectedCheckBoxList list.
          */
         whitePatchesNo = (CheckBox) findViewById(R.id.whitePatchesInThroatNo);
         assert whitePatchesNo != null;
@@ -197,12 +174,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(whitePatchesYes, whitePatchesNo);
-                selectedCheckBox.add(whitePatchesNo);
-                notSelectedCheckBox.add(whitePatchesYes);
-
-                selectedCheckBoxStack.push(whitePatchesNo);
-                notSelectedCheckBoxStack.push(whitePatchesYes);
+                addCheckBox(whitePatchesNo, whitePatchesYes, selectedCheckBoxList, notSelectedCheckBoxList);
 
             }
         });
@@ -210,7 +182,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
         /*
                 The listener method disables the "yes" and "no" checkboxes if the facial pain "yes"
-                checkbox is selected and adds "yes" to the selectedCheckBox list.
+                checkbox is selected and adds "yes" to the selectedCheckBoxList list.
          */
         facialPainYes = (CheckBox) findViewById(R.id.facialPainYes);
         assert facialPainYes != null;
@@ -218,18 +190,14 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(facialPainYes, facialPainNo);
-                selectedCheckBox.add(facialPainYes);
-                notSelectedCheckBox.add(facialPainNo);
+                addCheckBox(facialPainYes, facialPainNo, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(facialPainYes);
-                notSelectedCheckBoxStack.push(facialPainNo);
             }
         });
 
         /*
                 The listener method disable both the "yes" and the "no" checkbox if
-                the facial pain "no" checkbox is selected and adds "no" to the selectedCheckBox list.
+                the facial pain "no" checkbox is selected and adds "no" to the selectedCheckBoxList list.
          */
         facialPainNo = (CheckBox) findViewById(R.id.facialPainNo);
         assert facialPainNo!= null;
@@ -237,18 +205,13 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(facialPainYes,facialPainNo);
-                selectedCheckBox.add(facialPainNo);
-                notSelectedCheckBox.add(facialPainYes);
-
-                selectedCheckBoxStack.push(facialPainNo);
-                notSelectedCheckBoxStack.push(facialPainYes);
+                addCheckBox(facialPainNo, facialPainYes, selectedCheckBoxList, notSelectedCheckBoxList);
             }
         });
 
         /*
                 The listener method disables the "yes" and "no" checkboxes if the body
-                ache "yes" checkbox is selected and adds "yes" to the selectedCheckBox list.
+                ache "yes" checkbox is selected and adds "yes" to the selectedCheckBoxList list.
          */
         bodyAcheYes = (CheckBox) findViewById(R.id.bodyAcheYes);
         assert bodyAcheYes != null;
@@ -256,18 +219,13 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(bodyAcheYes, bodyAcheNo);
-                selectedCheckBox.add(bodyAcheYes);
-                notSelectedCheckBox.add(bodyAcheNo);
-
-                selectedCheckBoxStack.push(bodyAcheYes);
-                notSelectedCheckBoxStack.push(bodyAcheNo);
+                addCheckBox(bodyAcheYes, bodyAcheNo, selectedCheckBoxList, notSelectedCheckBoxList);
             }
         });
 
         /*
                 The listener method disables both the "yes" and the "no" checkboxes if
-                the body ache "no" checkbox is selected and adds "no" to the selectedCheckBox list.
+                the body ache "no" checkbox is selected and adds "no" to the selectedCheckBoxList list.
          */
         bodyAcheNo = (CheckBox) findViewById(R.id.bodyAcheNo);
         assert bodyAcheNo != null;
@@ -275,18 +233,13 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(bodyAcheYes, bodyAcheNo);
-                selectedCheckBox.add(bodyAcheNo);
-                notSelectedCheckBox.add(bodyAcheYes);
-
-                selectedCheckBoxStack.push(bodyAcheYes);
-                notSelectedCheckBoxStack.push(bodyAcheNo);
+                addCheckBox(bodyAcheNo, bodyAcheYes, selectedCheckBoxList, notSelectedCheckBoxList);
             }
         });
 
         /*
                 The listener method disables the "yes" and "no" checkboxes if the sneezing "yes"
-                checkbox is selected and adds "yes" to the selectedCheckBox list.
+                checkbox is selected and adds "yes" to the selectedCheckBoxList list.
          */
         sneezingYes = (CheckBox) findViewById(R.id.sneezingYes);
         assert sneezingYes != null;
@@ -294,18 +247,13 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(sneezingYes, sneezingNo);
-                selectedCheckBox.add(sneezingYes);
-                notSelectedCheckBox.add(sneezingNo);
-
-                selectedCheckBoxStack.push(sneezingYes);
-                notSelectedCheckBoxStack.push(sneezingNo);
+                addCheckBox(sneezingYes, sneezingNo, selectedCheckBoxList, notSelectedCheckBoxList);
             }
         });
 
         /*
                 The listener method disables both the "yes" and the "no" checkboxes if
-                the sneezing "no" checkbox is selected and adds "no" to the selectedCheckBox list.
+                the sneezing "no" checkbox is selected and adds "no" to the selectedCheckBoxList list.
          */
         sneezingNo = (CheckBox) findViewById(R.id.sneezingNo);
         assert sneezingNo != null;
@@ -313,18 +261,13 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(sneezingYes, sneezingNo);
-                selectedCheckBox.add(sneezingNo);
-                notSelectedCheckBox.add(sneezingYes);
-
-                selectedCheckBoxStack.push(sneezingYes);
-                notSelectedCheckBoxStack.push(sneezingNo);
+                addCheckBox(sneezingNo, sneezingYes, selectedCheckBoxList, notSelectedCheckBoxList);
             }
         });
 
           /*
             The listener method disables both the "yes" and the "no" checkbox if
-            nasal congestion "yes" checkbox is selected and adds "yes" to the selectedCheckBox list.
+            nasal congestion "yes" checkbox is selected and adds "yes" to the selectedCheckBoxList list.
          */
         nasalCongestionYes = (CheckBox) findViewById(R.id.nasalCongestionYes);
 
@@ -335,18 +278,13 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
                 Log.v(TAG, "Nasal Congestion Yes Checkbox was Selected!");
 
-                disable(nasalCongestionYes,nasalCongestionNo);
-                selectedCheckBox.add(nasalCongestionYes);
-                notSelectedCheckBox.add(nasalCongestionNo);
-
-                selectedCheckBoxStack.push(nasalCongestionYes);
-                notSelectedCheckBoxStack.push(nasalCongestionNo);
+                addCheckBox(nasalCongestionYes, nasalCongestionNo, selectedCheckBoxList, notSelectedCheckBoxList);
             }
         });
 
         /*
             The listener method disables both the "yes" and the "no" checkbox if
-            nasal congestion "no" checkbox is selected and adds "no" to the selectedCheckBox list.
+            nasal congestion "no" checkbox is selected and adds "no" to the selectedCheckBoxList list.
          */
         nasalCongestionNo = (CheckBox) findViewById(R.id.nasalCongestionNo);
         assert nasalCongestionNo != null;
@@ -354,19 +292,14 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(nasalCongestionYes,nasalCongestionNo);
-                selectedCheckBox.add(nasalCongestionNo);
-                notSelectedCheckBox.add(nasalCongestionYes);
-
-                selectedCheckBoxStack.push(nasalCongestionNo);
-                notSelectedCheckBoxStack.push(nasalCongestionYes);
+                addCheckBox(nasalCongestionNo, nasalCongestionYes, selectedCheckBoxList, notSelectedCheckBoxList);
             }
         });
 
         /*
                 The listener method displays an alert dialog if the "yes" checkbox for
                 nasal discharge is selected.  The method also disables both the "yes" and "no" checkboxes
-                and adds "yes" to the selectedCheckBox list.
+                and adds "yes" to the selectedCheckBoxList list.
          */
         nasalDischargeYes = (CheckBox) findViewById(R.id.nasalDischargeYes);
 
@@ -376,19 +309,15 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Log.v(TAG, "Nasal Discharge Yes Checkbox was Selected!");
-                nasalDischargeColorDialog();
-                disable(nasalDischargeYes,nasalDischargeNo);
-                selectedCheckBox.add(nasalDischargeYes);
-                notSelectedCheckBox.add(nasalDischargeNo);
+                createNasalDischargeColorDialog();
 
-                selectedCheckBoxStack.push(nasalDischargeYes);
-                notSelectedCheckBoxStack.push(nasalDischargeNo);
+                addCheckBox(nasalDischargeYes, nasalDischargeNo, selectedCheckBoxList, notSelectedCheckBoxList);
             }
         });
 
         /*
             The listener method disables both the "yes" and the "no" checkbox if
-            nasal discharge "no" checkbox is selected and adds "no" to the selectedCheckBox list.
+            nasal discharge "no" checkbox is selected and adds "no" to the selectedCheckBoxList list.
          */
         nasalDischargeNo = (CheckBox) findViewById(R.id.nasalDischargeNo);
         assert nasalDischargeNo != null;
@@ -396,18 +325,14 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(nasalDischargeYes,nasalDischargeNo);
-                selectedCheckBox.add(nasalDischargeNo);
-                notSelectedCheckBox.add(nasalDischargeYes);
+                addCheckBox(nasalDischargeNo, nasalDischargeYes, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(nasalDischargeNo);
-                notSelectedCheckBoxStack.push(nasalDischargeYes);
             }
         });
 
          /*
                 The listener method disables the "yes" and "no" checkboxes if the post
-                nasal drip "yes" checkbox is selected and adds "yes" to the selectedCheckBox list.
+                nasal drip "yes" checkbox is selected and adds "yes" to the selectedCheckBoxList list.
          */
         postNasalDripYes = (CheckBox) findViewById(R.id.postNasalDripYes);
         assert postNasalDripYes != null;
@@ -415,18 +340,13 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(postNasalDripYes, postNasalDripNo);
-                selectedCheckBox.add(postNasalDripYes);
-                notSelectedCheckBox.add(postNasalDripNo);
-
-                selectedCheckBoxStack.push(postNasalDripYes);
-                notSelectedCheckBoxStack.push(postNasalDripNo);
+                addCheckBox(postNasalDripYes, postNasalDripNo, selectedCheckBoxList, notSelectedCheckBoxList);
             }
         });
 
         /*
                 The listener method disables both the "yes" and the "no" checkboxes if
-                the post nasal drip "no" checkbox is selected and adds "no" to the selectedCheckBox list.
+                the post nasal drip "no" checkbox is selected and adds "no" to the selectedCheckBoxList list.
          */
         postNasalDripNo = (CheckBox) findViewById(R.id.postNasalDripNo);
         assert postNasalDripNo != null;
@@ -434,18 +354,14 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(postNasalDripYes, postNasalDripNo);
-                selectedCheckBox.add(postNasalDripNo);
-                notSelectedCheckBox.add(postNasalDripYes);
+                addCheckBox(postNasalDripNo, postNasalDripYes, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(postNasalDripNo);
-                notSelectedCheckBoxStack.push(postNasalDripYes);
             }
         });
 
          /*
                 The listener method disables the "yes" and "no" checkboxes if the shortness
-                 of breath or wheezing "yes" checkbox is selected and adds "yes" to the selectedCheckBox list.
+                 of breath or wheezing "yes" checkbox is selected and adds "yes" to the selectedCheckBoxList list.
          */
         shortnessOfBreathWheezingYes = (CheckBox) findViewById(R.id.shortnessOfBreathWheezingYes);
         assert shortnessOfBreathWheezingYes != null;
@@ -453,19 +369,15 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(shortnessOfBreathWheezingYes, shortnessOfBreathWheezingNo);
-                selectedCheckBox.add(shortnessOfBreathWheezingYes);
-                notSelectedCheckBox.add(shortnessOfBreathWheezingNo);
+                addCheckBox(shortnessOfBreathWheezingYes, shortnessOfBreathWheezingNo, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(shortnessOfBreathWheezingYes);
-                notSelectedCheckBoxStack.push(shortnessOfBreathWheezingNo);
             }
         });
 
         /*
                 The listener method disables both the "yes" and the "no" checkboxes if
                 the shortness of breath or wheezing "no" checkbox is selected and adds
-                "no" to the selectedCheckBox list.
+                "no" to the selectedCheckBoxList list.
          */
         shortnessOfBreathWheezingNo = (CheckBox) findViewById(R.id.shortnessOfBreathWheezingNo);
         assert shortnessOfBreathWheezingNo != null;
@@ -473,19 +385,15 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(shortnessOfBreathWheezingYes, shortnessOfBreathWheezingNo);
-                selectedCheckBox.add(shortnessOfBreathWheezingNo);
-                notSelectedCheckBox.add(shortnessOfBreathWheezingYes);
+                addCheckBox(shortnessOfBreathWheezingNo, shortnessOfBreathWheezingYes, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(shortnessOfBreathWheezingNo);
-                notSelectedCheckBoxStack.push(shortnessOfBreathWheezingYes);
             }
         });
 
 
         /*
                 The listener method disables the "yes" and "no" checkboxes if the chest pains "yes"
-                checkbox is selected and adds "yes" to the selectedCheckBox list.
+                checkbox is selected and adds "yes" to the selectedCheckBoxList list.
          */
         chestPainYes = (CheckBox) findViewById(R.id.chestPainYes);
         assert chestPainYes != null;
@@ -493,18 +401,14 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(chestPainYes, chestPainNo);
-                selectedCheckBox.add(chestPainYes);
-                notSelectedCheckBox.add(chestPainNo);
+                addCheckBox(chestPainYes, chestPainNo, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(chestPainYes);
-                notSelectedCheckBoxStack.push(chestPainNo);
             }
         });
 
         /*
                 The listener method disables both the "yes" and the "no" checkboxes if
-                the chest pain "no" checkbox is selected and adds "no" to the selectedCheckBox list.
+                the chest pain "no" checkbox is selected and adds "no" to the selectedCheckBoxList list.
          */
         chestPainNo = (CheckBox) findViewById(R.id.chestPainNo);
         assert chestPainNo != null;
@@ -512,18 +416,14 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(chestPainYes, chestPainNo);
-                selectedCheckBox.add(chestPainNo);
-                notSelectedCheckBox.add(chestPainYes);
+                addCheckBox(chestPainNo, chestPainYes, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(chestPainNo);
-                notSelectedCheckBoxStack.push(chestPainYes);
             }
         });
 
         /*
                 The listener method disables the "yes" and "no" checkboxes if the neck
-                stiffness "yes" checkbox is selected and adds "yes" to the selectedCheckBox list.
+                stiffness "yes" checkbox is selected and adds "yes" to the selectedCheckBoxList list.
          */
         neckStiffnessYes = (CheckBox) findViewById(R.id.neckStiffnessYes);
         assert neckStiffnessYes != null;
@@ -531,18 +431,14 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(neckStiffnessYes, neckStiffnessNo);
-                selectedCheckBox.add(neckStiffnessYes);
-                notSelectedCheckBox.add(neckStiffnessNo);
+                addCheckBox(neckStiffnessYes, neckStiffnessNo, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(neckStiffnessYes);
-                notSelectedCheckBoxStack.push(neckStiffnessNo);
             }
         });
 
         /*
                 The listener method disables both the "yes" and the "no" checkboxes if
-                the neckStiffness "no" checkbox is selected and adds "no" to the selectedCheckBox list.
+                the neckStiffness "no" checkbox is selected and adds "no" to the selectedCheckBoxList list.
          */
         neckStiffnessNo = (CheckBox) findViewById(R.id.neckStiffnessNo);
         assert neckStiffnessNo != null;
@@ -550,18 +446,14 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(neckStiffnessYes, neckStiffnessNo);
-                selectedCheckBox.add(neckStiffnessNo);
-                notSelectedCheckBox.add(neckStiffnessYes);
+                addCheckBox(neckStiffnessNo, neckStiffnessYes, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(neckStiffnessNo);
-                notSelectedCheckBoxStack.push(neckStiffnessYes);
             }
         });
 
                 /*
                 The listener method disables the "yes" and "no" checkboxes if the neck
-                stiffness "yes" checkbox is selected and adds "yes" to the selectedCheckBox list.
+                stiffness "yes" checkbox is selected and adds "yes" to the selectedCheckBoxList list.
          */
         tenderLymphNodesYes = (CheckBox) findViewById(R.id.tenderLymphNodesYes);
         assert tenderLymphNodesYes != null;
@@ -569,18 +461,14 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(tenderLymphNodesYes, tenderLymphNodesNo);
-                selectedCheckBox.add(tenderLymphNodesYes);
-                notSelectedCheckBox.add(tenderLymphNodesNo);
+                addCheckBox(tenderLymphNodesYes, tenderLymphNodesNo, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(tenderLymphNodesYes);
-                notSelectedCheckBoxStack.push(tenderLymphNodesNo);
             }
         });
 
         /*
                 The listener method disables both the "yes" and the "no" checkboxes if
-                the neckStiffness "no" checkbox is selected and adds "no" to the selectedCheckBox list.
+                the neckStiffness "no" checkbox is selected and adds "no" to the selectedCheckBoxList list.
          */
         tenderLymphNodesNo = (CheckBox) findViewById(R.id.tenderLymphNodesNo);
         assert tenderLymphNodesNo != null;
@@ -588,18 +476,15 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(tenderLymphNodesYes, tenderLymphNodesNo);
-                selectedCheckBox.add(tenderLymphNodesNo);
-                notSelectedCheckBox.add(tenderLymphNodesYes);
+                addCheckBox(tenderLymphNodesNo, tenderLymphNodesYes, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(tenderLymphNodesNo);
-                notSelectedCheckBoxStack.push(tenderLymphNodesYes);
+
             }
         });
 
         /*
                 The listener method disables the "yes" and "no" checkboxes if the fatigue "yes"
-                checkbox is selected and adds "yes" to the selectedCheckBox list.
+                checkbox is selected and adds "yes" to the selectedCheckBoxList list.
          */
         headacheYes = (CheckBox) findViewById(R.id.headacheYes);
         assert headacheYes != null;
@@ -607,18 +492,15 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(headacheYes, headacheNo);
-                selectedCheckBox.add(headacheYes);
-                notSelectedCheckBox.add(headacheNo);
+                addCheckBox(headacheYes, headacheNo, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(headacheYes);
-                notSelectedCheckBoxStack.push(headacheNo);
+
             }
         });
 
         /*
                 The listener method disables both the "yes" and the "no" checkboxes if
-                the cough "no" checkbox is selected and adds "no" to the selectedCheckBox list.
+                the cough "no" checkbox is selected and adds "no" to the selectedCheckBoxList list.
          */
         headacheNo = (CheckBox) findViewById(R.id.headacheNo);
         assert headacheNo != null;
@@ -626,12 +508,8 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(headacheYes, headacheNo);
-                selectedCheckBox.add(headacheNo);
-                notSelectedCheckBox.add(headacheYes);
+                addCheckBox(headacheNo, headacheYes, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBoxStack.push(headacheNo);
-                notSelectedCheckBoxStack.push(headacheYes);
             }
         });
 
@@ -647,13 +525,8 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Log.v(TAG, "Pre-existing Conditions Yes Checkbox was Selected!");
-                preExistingConditionDialog();
-                disable(preExistingConditionsYes, preExistingConditionsNo);
-                selectedCheckBox.add(preExistingConditionsYes);
-                notSelectedCheckBox.add(preExistingConditionsNo);
-
-                selectedCheckBoxStack.push(preExistingConditionsYes);
-                notSelectedCheckBoxStack.push(preExistingConditionsNo);
+                createPreExistingConditionDialog();
+                addCheckBox(preExistingConditionsYes, preExistingConditionsNo, selectedCheckBoxList, notSelectedCheckBoxList);
 
             }
         });
@@ -664,13 +537,8 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                disable(preExistingConditionsYes, preExistingConditionsNo);
-                selectedCheckBox.add(preExistingConditionsNo);
-                notSelectedCheckBox.add(preExistingConditionsYes);
+                addCheckBox(preExistingConditionsNo, preExistingConditionsYes, selectedCheckBoxList, notSelectedCheckBoxList);
 
-
-                selectedCheckBoxStack.push(preExistingConditionsNo);
-                notSelectedCheckBoxStack.push(preExistingConditionsYes);
             }
         });
 
@@ -682,13 +550,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Log.v(TAG, "Pre-existing Conditions Yes Checkbox was Selected!");
-                disable(symptomsLessThanSevenDays, symptomsMoreThanSevenDays);
-
-                selectedCheckBox.add(symptomsLessThanSevenDays);
-                notSelectedCheckBox.add(symptomsMoreThanSevenDays);
-
-                selectedCheckBoxStack.push(symptomsLessThanSevenDays);
-                notSelectedCheckBoxStack.push(symptomsMoreThanSevenDays);
+                addCheckBox(symptomsLessThanSevenDays, symptomsMoreThanSevenDays, selectedCheckBoxList, notSelectedCheckBoxList);
             }
         });
 
@@ -700,13 +562,8 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Log.v(TAG, "Pre-existing Conditions Yes Checkbox was Selected!");
-                disable(symptomsLessThanSevenDays, symptomsMoreThanSevenDays);
+                addCheckBox(symptomsMoreThanSevenDays, symptomsLessThanSevenDays, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBox.add(symptomsMoreThanSevenDays);
-                notSelectedCheckBox.add(symptomsLessThanSevenDays);
-
-                selectedCheckBoxStack.push(symptomsMoreThanSevenDays);
-                notSelectedCheckBoxStack.push(symptomsLessThanSevenDays);
             }
         });
 
@@ -722,7 +579,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //Prompt the user to  make sure the selections made are the correct answers
-                selectionConformationDialog();
+                createSelectionConformationDialog();
                 Log.v(TAG, "The result button was clicked!");
 ;
             }
@@ -734,15 +591,15 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
     /*
             This method creates a dialog to prompt the user to confirm the selections made.
             The "yes" button will simply exit the dialog and the "no" button will reset will
-            reset all checkboxes. The selectedCheckBox list will be emptied as well.
+            reset all checkboxes. The selectedCheckBoxList list will be emptied as well.
      */
-    private void selectionConformationDialog() {
+    private Dialog createSelectionConformationDialog() {
         final Dialog selectionConformationDialog = new Dialog(this);
         selectionConformationDialog.setContentView(R.layout.dialog_selection_conformation_layout);
         selectionConformationDialog.setTitle(R.string.selection_dialog_title_text);
         selectionConformationDialog.show();
 
-        Button yesButton, noButton;
+        final Button yesButton, noButton;
 
         yesButton = (Button) selectionConformationDialog.findViewById(R.id.yesButton);
         assert yesButton != null;
@@ -752,96 +609,41 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
                 // Debug Stuff --> --> --> // Debug Stuff --> --> -->
                 Log.v(TAG, "This is the selected checkbox list:");
-                printSelectionList(selectedCheckBox);
+                printSelectionList(selectedCheckBoxList);
                 Log.v(TAG, "This is the not selected list");
-                printSelectionList(notSelectedCheckBox);
-
-                Log.v(TAG, "This is the selected checkbox stack:");
-                printSelectionStack(selectedCheckBoxStack);
-                Log.v(TAG, "This is the not selected stack");
-                printSelectionStack(notSelectedCheckBoxStack);
-
+                printSelectionList(notSelectedCheckBoxList);
 
                 /*
-                    User is happy with selections made and confirms them
-                    Display the correct result screen based on the options chosen by the user
+                        User is happy with selections made and confirms them
+                        Display the correct result screen based on the options chosen by the user
+                        Check for the checkboxes that determine antibiotic evaluation
+
+                ArrayList<CheckBox> yesList = new ArrayList<CheckBox>();
+                yesList.add(highFeverRange);
+                yesList.add(whitePatchesYes);
+                yesList.add(shortnessOfBreathWheezingYes);
+                yesList.add(chestPainYes);
+                yesList.add(neckStiffnessYes);
+                yesList.add(tenderLymphNodesYes);
+                yesList.add(preExistingConditionsYes);
+                yesList.add(symptomsMoreThanSevenDays);
                 */
-
-                int numberOfItemsInList = selectedCheckBox.size();
-                switch (numberOfItemsInList) {
-
-                    case 1:
-                        // Create "onlySelectionMade" CheckBox and assign it to the first item in the list
-                        CheckBox onlySelectionMade = selectedCheckBox.get(0);
-
-                        // Definitely yes for further evaluation
-                        if (onlySelectionMade.equals(preExistingConditionsYes)) {
-
-                            selectionConformationDialog.dismiss();
-                            resultYesDialog();
-                        }
-
-                        // Definitely no antibiotic
-                        if (onlySelectionMade.equals(nasalCongestionYes)
-                                || onlySelectionMade.equals(postNasalDripYes)
-                                || onlySelectionMade.equals(coughYes)
-                                || onlySelectionMade.equals(soreThroatHoarsenessYes)
-                                || onlySelectionMade.equals(headacheYes)
-                                || onlySelectionMade.equals(facialPainYes)
-                                || onlySelectionMade.equals(bodyAcheYes)
-                                || onlySelectionMade.equals(feverNo) ) {
-
-                            selectionConformationDialog.dismiss();
-                            resultNoDialog();
-                        }
-                        break;
-
-                    case 2:
-
-                        // Definitely yes for further evaluation
-                        if ((selectedCheckBox.contains(feverYes) && selectedCheckBox.contains(highFeverRange)) ) {
-
-                            selectionConformationDialog.dismiss();
-                            resultYesDialog();
-                        }
-
-                        // Definitely no antibiotic
-                        if ((selectedCheckBox.contains(feverNo) && selectedCheckBox.contains(nasalCongestionYes))
-                                || (selectedCheckBox.contains(soreThroatHoarsenessYes) && selectedCheckBox.contains(nasalCongestionYes))
-                                || (selectedCheckBox.contains(soreThroatHoarsenessYes) && selectedCheckBox.contains(coughYes))
-                                || (selectedCheckBox.contains(coughYes) && selectedCheckBox.contains(nasalCongestionYes))
-                                || (selectedCheckBox.contains(coughYes) && selectedCheckBox.contains(sneezingYes))) {
-
-                            selectionConformationDialog.dismiss();
-                            resultNoDialog();
-                        }
-
-                        break;
-                    case 3:
+                if (selectedCheckBoxList.contains(highFeverRange)
+                        || selectedCheckBoxList.contains(whitePatchesYes)
+                        || selectedCheckBoxList.contains(shortnessOfBreathWheezingYes)
+                        || selectedCheckBoxList.contains(chestPainYes)
+                        || selectedCheckBoxList.contains(neckStiffnessYes)
+                        || selectedCheckBoxList.contains(tenderLymphNodesYes)
+                        || selectedCheckBoxList.contains(preExistingConditionsYes)
+                        || selectedCheckBoxList.contains(symptomsMoreThanSevenDays)) {
+                    selectionConformationDialog.dismiss();
+                    createResultYesDialog();
+                } else {
+                    selectionConformationDialog.dismiss();
+                    createResultNoDialog();
 
                 }
-
-                /*
-                if (itemsInCheckBoxList == 1) {
-
-                    // Create "onlySelectionMade" CheckBox and assign it to the first item in the list
-                    CheckBox onlySelectionMade = selectedCheckBox.get(0);
-
-                    // Definitely no antibiotic
-                    if (onlySelectionMade.equals(nasalCongestionYes)
-                            || onlySelectionMade.equals(coughYes)
-                            || onlySelectionMade.equals(soreThroatHoarsenessYes)
-                            || onlySelectionMade.equals(headacheYes)
-                            || onlySelectionMade.equals(facialPainYes)
-                            || onlySelectionMade.equals(bodyAcheYes)) {
-
-                        selectionConformationDialog.dismiss();
-                        resultNoDialog();
-                    }
-
-                }
-                */
-            }
+            } // Closes the yes onClick method
         });
 
         noButton = (Button) selectionConformationDialog.findViewById(R.id.noButton);
@@ -851,31 +653,32 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // User is not happy with selections so all check boxes are reset
-                for (CheckBox selected : selectedCheckBox) {
+                for (CheckBox selected : selectedCheckBoxList) {
                     selected.setEnabled(true);
                     selected.setChecked(false);
+                    selected.setClickable(true);
                 }
 
-                for (CheckBox notSelected : notSelectedCheckBox) {
+                for (CheckBox notSelected : notSelectedCheckBoxList) {
                     notSelected.setEnabled(true);
                     notSelected.setChecked(false);
+                    notSelected.setClickable(true);
                 }
 
                 // The selected checkbox list and not selected checkbox list need to be cleared
-                selectedCheckBox = new ArrayList<CheckBox>();
-                notSelectedCheckBox = new ArrayList<CheckBox>();
-
-                selectedCheckBoxStack = new Stack<CheckBox>();
-                notSelectedCheckBoxStack = new Stack<CheckBox>();
+                selectedCheckBoxList = new ArrayList<CheckBox>();
+                notSelectedCheckBoxList = new ArrayList<CheckBox>();
 
                 selectionConformationDialog.dismiss();
 
             }
         });
+
+        return selectionConformationDialog;
     } // Closes the selection conformation Dialog
 
 
-    private void resultNoDialog() {
+    private Dialog createResultNoDialog() {
         final Dialog resultNoDialog = new Dialog(this);
         resultNoDialog.setContentView(R.layout.dialog_result_no_layout);
         resultNoDialog.setTitle("You Do Not Need An Antibiotic!");
@@ -892,34 +695,35 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                 Log.v(TAG, "Done Button from Result No Dialog was Clicked!");
 
                 resultNoDialog.dismiss();
-                displayAntibioticFactDialog();
+                createAntibioticFactDialog();
             }
         });
 
-
+        return resultNoDialog;
     }
 
-    private void displayAntibioticFactDialog() {
+    private Dialog createAntibioticFactDialog() {
         final Dialog antibioticFactDialog = new Dialog(this);
         antibioticFactDialog.setContentView(R.layout.dialog_antibiotic_fact_layout);
         antibioticFactDialog.show();
 
-        Toast.makeText(this, "Please scroll down to see all facts.", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Please scroll down to see all facts.", Toast.LENGTH_SHORT).show();
+
 
         // Create a string array and populate it with the string array from the "string.xml" file
         String[] factArray = getResources().getStringArray(R.array.fact_array);
 
         // Create an ArrayList to add the "factArray" to, this is to add the index number to the output.
-        ArrayList<String> factArrayList = new ArrayList<String>();
+        // ArrayList<String> factArrayList = new ArrayList<String>();
 
-        // Populate the "factArrayList" with facts from the "factArray"
-        for (int i = 0; i < factArray.length; i++) {
-            factArrayList.add( (i + 1) + ". " + factArray[i]);
-        }
+        // Populate the "factArrayList" with facts from the "factArray" and add number order to list
+        // for (int i = 0; i < factArray.length; i++) {
+        // factArrayList.add( (i + 1) + ". " + factArray[i]);
+        // }
 
         //Initialize ArrayAdapter to pass to ListView
                                         /*Context,             layout,             array or arrayList*/
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.custom_list_view, factArrayList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.custom_list_view, factArray);
 
         // Create ListView object and link to reference in activity_main.xml
         // Only need to link the ListView in onCreate
@@ -939,9 +743,11 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                 antibioticFactDialog.dismiss();
             }
         });
+
+        return antibioticFactDialog;
     }
 
-    private void resultYesDialog() {
+    private Dialog createResultYesDialog() {
         final Dialog resultYesAntibioticDialog = new Dialog(this);
         resultYesAntibioticDialog.setContentView(R.layout.dialog_result_yes_layout);
         resultYesAntibioticDialog.setTitle("You Do Need An Antibiotic!");
@@ -960,19 +766,19 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                 Log.v(TAG, "Cancel Button from the result yes dialog was selected!");
 
                 // User cancels so reset all check boxes
-                for (CheckBox selected : selectedCheckBox) {
+                for (CheckBox selected : selectedCheckBoxList) {
                     selected.setEnabled(true);
                     selected.setChecked(false);
                 }
 
-                for (CheckBox notSelected : notSelectedCheckBox) {
+                for (CheckBox notSelected : notSelectedCheckBoxList) {
                     notSelected.setEnabled(true);
                     notSelected.setChecked(false);
                 }
 
                 // The selected checkbox list and not selected checkbox list need to be cleared
-                selectedCheckBox = new ArrayList<CheckBox>();
-                notSelectedCheckBox = new ArrayList<CheckBox>();
+                selectedCheckBoxList = new ArrayList<CheckBox>();
+                notSelectedCheckBoxList = new ArrayList<CheckBox>();
                 resultYesAntibioticDialog.cancel();
             }
         });
@@ -986,20 +792,20 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                 Log.v(TAG, "Done Button from Result Yes Dialog was Clicked!");
 
                 resultYesAntibioticDialog.dismiss();
-                displayAntibioticFactDialog();
+                createAntibioticFactDialog();
             }
         });
 
-
+        return resultYesAntibioticDialog;
     }
 
     /*
-            This method creates an alert dialog for when the "yes" checkbox for fever is selected.
+            This method creates a dialog for when the fever "yes" checkbox is selected.
+            Only one fever range can be selected either low or high
      */
-    private void feverDialog() {
+    private Dialog createFeverDialog() {
         final Dialog feverDialog = new Dialog(this);
         feverDialog.setContentView(R.layout.dialog_fever_layout);
-      //  feverDialog.setTitle(R.string.fever_dialog_title_text);
         feverDialog.show();
 
         lowFeverRange = (CheckBox) feverDialog.findViewById(R.id.lowFeverRangeCheckBox);
@@ -1010,12 +816,8 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
                 Log.v(TAG, "Low Fever Range was selected.");
 
-                disable(lowFeverRange, highFeverRange);
-                selectedCheckBox.add(lowFeverRange);
-                notSelectedCheckBox.add(highFeverRange);
 
-                selectedCheckBoxStack.push(lowFeverRange);
-                notSelectedCheckBoxStack.push(highFeverRange);
+                addCheckBox(lowFeverRange, highFeverRange, selectedCheckBoxList, notSelectedCheckBoxList);
 
             }
         });
@@ -1027,13 +829,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Log.v(TAG, "High Fever Range was selected.");
-
-                disable(lowFeverRange, highFeverRange);
-                selectedCheckBox.add(highFeverRange);
-                notSelectedCheckBox.add(lowFeverRange);
-
-                selectedCheckBoxStack.push(highFeverRange);
-                notSelectedCheckBoxStack.push(lowFeverRange);
+                addCheckBox(highFeverRange, lowFeverRange, selectedCheckBoxList, notSelectedCheckBoxList);
 
             }
         });
@@ -1047,53 +843,34 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 /*
-                        Check the selectedCheckBox list for "feverYes" and either of the available choices.
+                        Check the selectedCheckBoxList list for "feverYes" and either of the available choices.
                         Check to make sure "feverYes" is not the only item selected.
                         Remove the added CheckBoxes from both the "selected" and
                             "notSelected" lists if "feverYes" and/or a fever range are selected.
                  */
-                if (selectedCheckBox.contains(feverYes) && (selectedCheckBox.contains(lowFeverRange) || selectedCheckBox.contains(highFeverRange))) {
+                if (selectedCheckBoxList.contains(feverYes) && (selectedCheckBoxList.contains(lowFeverRange) || selectedCheckBoxList.contains(highFeverRange))) {
 
-                    for (int i = 1, n = selectedCheckBox.size(); i < 3 ; i++) {
-                        selectedCheckBox.remove(n - i);
-                        notSelectedCheckBox.remove(n - i);
+                    for (int i = 1, n = selectedCheckBoxList.size(); i < 3; i++) {
+                        selectedCheckBoxList.remove(n - i);
+                        notSelectedCheckBoxList.remove(n - i);
                     }
 
 
-                } else if (selectedCheckBox.contains(feverYes)) {
+                } else if (selectedCheckBoxList.contains(feverYes)) {
 
-                    for (int i = 1, n = selectedCheckBox.size(); i < 2 ; i++) {
-                        selectedCheckBox.remove(n - i);
-                        notSelectedCheckBox.remove(n - i);
-                    }
+                    int n = selectedCheckBoxList.size();
+                    selectedCheckBoxList.remove(n - 1);
+                    notSelectedCheckBoxList.remove(n - 1);
+
                 }
 
-                  /*
-                        Check the selectedCheckBoxStack list for "feverYes" and either of the available choices
-                 */
-                if (selectedCheckBoxStack.contains(feverYes) && (selectedCheckBoxStack.contains(lowFeverRange) || selectedCheckBoxStack.contains(highFeverRange))) {
-
-                    for (int i = 1, n = selectedCheckBoxStack.size(); i < 3 ; i++) {
-                        selectedCheckBoxStack.remove(n - i);
-                        notSelectedCheckBoxStack.remove(n - i);
-                    }
-
-                } else if (selectedCheckBoxStack.contains(feverYes)) {
-
-                    for (int i = 1, n = selectedCheckBoxStack.size(); i < 2 ; i++) {
-                        selectedCheckBoxStack.remove(n - i);
-                        notSelectedCheckBoxStack.remove(n - i);
-                    }
-
-
-                }
 
                 // Debug Stuff --> --> --> -->
                 Log.v(TAG, "Cancel Button from Fever Dialog was Clicked!");
                 Log.v(TAG, "This is the selected checkbox list:");
-                printSelectionList(selectedCheckBox);
+                printSelectionList(selectedCheckBoxList);
                 Log.v(TAG, "This is the not selected checkbox list:");
-                printSelectionList(notSelectedCheckBox);
+                printSelectionList(notSelectedCheckBoxList);
 
 
                 resetCheckBoxOnCancel(feverYes, feverNo);
@@ -1111,14 +888,14 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                 Log.v(TAG, "Confirm Button from Fever Dialog was Clicked!");
             }
         });
-
+        return feverDialog;
     } // Closes the fever dialog method
 
     /*
-            This method creates an alert dialog to prompt the user to choose what color their
+            This method creates a dialog to prompt the user to choose what color their
             nasal discharge is.
     */
-    private void nasalDischargeColorDialog() {
+    private Dialog createNasalDischargeColorDialog() {
         final Dialog nasalDischargeDialog = new Dialog(this);
         nasalDischargeDialog.setContentView(R.layout.dialog_nasal_discharge_layout);
         nasalDischargeDialog.show();
@@ -1131,15 +908,8 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Log.v(TAG, "Nasal Discharge Clear was selected!!!");
-                disable(colorClear, colorYellowGreen);
+                addCheckBox(colorClear, colorYellowGreen, selectedCheckBoxList, notSelectedCheckBoxList);
 
-                selectedCheckBox.add(colorClear);
-
-                notSelectedCheckBox.add(colorYellowGreen);
-
-                selectedCheckBoxStack.push(colorClear);
-
-                notSelectedCheckBoxStack.push(colorYellowGreen);
 
             }
         });
@@ -1151,16 +921,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Log.v(TAG, "Nasal Discharge Yellow Green was selected!!!");
-                disable(colorClear, colorYellowGreen);
-
-                selectedCheckBox.add(colorYellowGreen);
-
-                notSelectedCheckBox.add(colorClear);
-
-                selectedCheckBoxStack.push(colorYellowGreen);
-
-                notSelectedCheckBoxStack.push(colorClear);
-
+                addCheckBox(colorYellowGreen, colorClear, selectedCheckBoxList, notSelectedCheckBoxList);
             }
         });
 
@@ -1175,84 +936,31 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                 Log.v(TAG, "Cancel Button from the Nasal Discharge Dialog was Clicked!");
 
 
-                if (selectedCheckBox.contains(nasalDischargeYes)) {
-                    // Remove "nasalDischargeYes", one item total
-                    // Remove "nasalDischargeNo", one item total
-                    for (int i = 1, n = selectedCheckBox.size(); i < 2 ; i++) {
-                        selectedCheckBox.remove(n - i);
+                if (selectedCheckBoxList.contains(nasalDischargeYes) && (selectedCheckBoxList.contains(colorClear) || selectedCheckBoxList.contains(colorYellowGreen))) {
 
-                        notSelectedCheckBox.remove(n - i);
-                    }
-
-
-                } else if (selectedCheckBox.contains(nasalDischargeYes) && (selectedCheckBox.contains(colorClear) || selectedCheckBox.contains(colorYellowGreen))) {
                     // Remove "nasalDischargeYes" and nasal discharge choice, two items total
                     // Remove "nasalDischargeNo" and nasal discharge choice not selected, two items total
-                    for (int i = 1, n = selectedCheckBox.size(); i < 3 ; i++) {
-                        selectedCheckBox.remove(n - i);
+                    for (int i = 1, n = selectedCheckBoxList.size(); i < 3; i++) {
+                        selectedCheckBoxList.remove(n - i);
 
-                        notSelectedCheckBox.remove(n - i);
+                        notSelectedCheckBoxList.remove(n - i);
                     }
+
+                } else if (selectedCheckBoxList.contains(nasalCongestionYes)) {
+
+                    // Remove "nasalDischargeYes", one item total
+                    // Remove "nasalDischargeNo", one item total
+                    int n = selectedCheckBoxList.size();
+                    selectedCheckBoxList.remove(n - 1);
+                    notSelectedCheckBoxList.remove(n - 1);
                 }
-
-
-
-                if (selectedCheckBoxStack.contains(nasalDischargeYes)) {
-
-                    for (int i = 1, n = selectedCheckBoxStack.size(); i < 2 ; i++) {
-                        selectedCheckBoxStack.remove(n - i);
-                    }
-
-                    for (int i = 1, n = notSelectedCheckBoxStack.size(); i < 2 ; i++) {
-                        notSelectedCheckBoxStack.remove(n - i);
-                    }
-
-                } else if (selectedCheckBoxStack.contains(nasalDischargeYes) && (selectedCheckBoxStack.contains(colorClear) || selectedCheckBoxStack.contains(colorYellowGreen))) {
-                    // Remove "nasalDischargeYes" and nasal discharge color choice, two items total
-                    for (int i = 1, n = selectedCheckBoxStack.size(); i < 3 ; i++) {
-                        selectedCheckBoxStack.remove(n - i);
-                    }
-                    // Remove "nasalDischargeNo" and nasal discharge color choice not selected, ten items total
-                    for (int i = 1, n = notSelectedCheckBoxStack.size(); i < 3 ; i++) {
-                        notSelectedCheckBoxStack.remove(n - i);
-                    }
-                }
-
-
-                /*
-                // Check for items added to selectedCheckBox list and remove them
-                if (selectedCheckBox.contains(nasalDischargeYes) && (selectedCheckBox.contains(colorClear) || selectedCheckBox.contains(colorYellowGreen))) {
-
-                    // Remove "nasalDischargeYes" and nasal discharge choice, two items total
-                    for (int i = 1, n = selectedCheckBox.size(); i < 3 ; i++) {
-                        selectedCheckBox.remove(n - i);
-                    }
-                    // Remove "preExistingNo" and pre existing choices not selected, ten items total
-                    for (int i = 1, n = notSelectedCheckBox.size(); i < 3 ; i++) {
-                        notSelectedCheckBox.remove(n - i);
-                    }
-                }
-
-                if (selectedCheckBoxStack.contains(nasalDischargeYes) && (selectedCheckBoxStack.contains(colorClear) || selectedCheckBoxStack.contains(colorYellowGreen))) {
-
-                    // Remove "nasalDischargeYes" and nasal discharge color choice, two items total
-                    for (int i = 1, n = selectedCheckBoxStack.size(); i < 3 ; i++) {
-                        selectedCheckBoxStack.remove(n - i);
-                    }
-                    // Remove "nasalDischargeNo" and nasal discharge color choice not selected, ten items total
-                    for (int i = 1, n = notSelectedCheckBoxStack.size(); i < 3 ; i++) {
-                        notSelectedCheckBoxStack.remove(n - i);
-                    }
-
-                }
-                */
 
                 // Debug Stuff --> --> --> -->
                 Log.v(TAG, "Cancel Button from Nasal Discharge Dialog was Clicked!");
                 Log.v(TAG, "This is the selected checkbox list:");
-                printSelectionList(selectedCheckBox);
+                printSelectionList(selectedCheckBoxList);
                 Log.v(TAG, "This is the not selected checkbox list:");
-                printSelectionList(notSelectedCheckBox);
+                printSelectionList(notSelectedCheckBoxList);
 
                 resetCheckBoxOnCancel(nasalDischargeYes, nasalDischargeNo);
                 nasalDischargeDialog.cancel();
@@ -1269,13 +977,15 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                 Log.v(TAG, "Confirm Button from Dialog was Clicked!");
             }
         });
+
+        return nasalDischargeDialog;
     } // Closes nasal discharge dialog method
 
     /*
-            This method creates an alert dialog to prompt the user to select
+            This method creates a dialog to prompt the user to select
             which pre-existing condition applies to them.
      */
-    private void preExistingConditionDialog() {
+    private Dialog createPreExistingConditionDialog() {
 
         final Dialog preExistingConditionDialog = new Dialog(this);
         preExistingConditionDialog.setContentView(R.layout.dialog_pre_existing_conditions_layout);
@@ -1288,7 +998,6 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             Add selections to their appropriate List
 
         */
-
         pregnantOrTwoWeeksPostpartum = (CheckBox) preExistingConditionDialog.findViewById(R.id.pregnantPostpartumCheckbox);
         assert pregnantOrTwoWeeksPostpartum != null;
         pregnantOrTwoWeeksPostpartum.setOnClickListener(new View.OnClickListener() {
@@ -1296,22 +1005,23 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Log.v(TAG, "Pregnant Postpartum was selected!!!");
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, cad, hiv, aids, recentUseOfAntibiotic, recentHospitalization, autoimmuneDisease, chronicSteroidUse);
+                pregnantOrTwoWeeksPostpartum.setEnabled(false);
+                /*
+                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
 
-                selectedCheckBox.add(pregnantOrTwoWeeksPostpartum);
+                selectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
 
-                notSelectedCheckBox.add(cancer);
-                notSelectedCheckBox.add(copd);
-                notSelectedCheckBox.add(cad);
-                notSelectedCheckBox.add(hiv);
-                notSelectedCheckBox.add(aids);
-                notSelectedCheckBox.add(recentUseOfAntibiotic);
-                notSelectedCheckBox.add(recentHospitalization);
-                notSelectedCheckBox.add(autoimmuneDisease);
-                notSelectedCheckBox.add(chronicSteroidUse);
-
+                notSelectedCheckBoxList.add(cancer);
+                notSelectedCheckBoxList.add(copd);
+                notSelectedCheckBoxList.add(hiv);
+                notSelectedCheckBoxList.add(aids);
+                notSelectedCheckBoxList.add(recentUseOfAntibiotic);
+                notSelectedCheckBoxList.add(recentHospitalization);
+                notSelectedCheckBoxList.add(chronicSteroidUse);
+                */
             }
         });
+
 
         cancer = (CheckBox) preExistingConditionDialog.findViewById(R.id.cancerCheckbox);
         assert cancer != null;
@@ -1319,21 +1029,22 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                cancer.setEnabled(false);
                 Log.v(TAG, "Cancer was selected!!!");
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, cad, hiv, aids, recentUseOfAntibiotic, recentHospitalization, autoimmuneDisease, chronicSteroidUse);
 
-                selectedCheckBox.add(cancer);
+                 /*
+                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
 
-                notSelectedCheckBox.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBox.add(copd);
-                notSelectedCheckBox.add(cad);
-                notSelectedCheckBox.add(hiv);
-                notSelectedCheckBox.add(aids);
-                notSelectedCheckBox.add(recentUseOfAntibiotic);
-                notSelectedCheckBox.add(recentHospitalization);
-                notSelectedCheckBox.add(autoimmuneDisease);
-                notSelectedCheckBox.add(chronicSteroidUse);
+                selectedCheckBoxList.add(cancer);
 
+                notSelectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
+                notSelectedCheckBoxList.add(copd);
+                notSelectedCheckBoxList.add(hiv);
+                notSelectedCheckBoxList.add(aids);
+                notSelectedCheckBoxList.add(recentUseOfAntibiotic);
+                notSelectedCheckBoxList.add(recentHospitalization);
+                notSelectedCheckBoxList.add(chronicSteroidUse);
+                */
             }
         });
 
@@ -1344,44 +1055,20 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Log.v(TAG, "COPD was selected!!!");
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, cad, hiv, aids, recentUseOfAntibiotic, recentHospitalization, autoimmuneDisease, chronicSteroidUse);
+                copd.setEnabled(false);
+                /*
+                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
 
-                selectedCheckBox.add(copd);
+                selectedCheckBoxList.add(copd);
 
-                notSelectedCheckBox.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBox.add(cancer);
-                notSelectedCheckBox.add(cad);
-                notSelectedCheckBox.add(hiv);
-                notSelectedCheckBox.add(aids);
-                notSelectedCheckBox.add(recentUseOfAntibiotic);
-                notSelectedCheckBox.add(recentHospitalization);
-                notSelectedCheckBox.add(autoimmuneDisease);
-                notSelectedCheckBox.add(chronicSteroidUse);
-
-            }
-        });
-
-        cad = (CheckBox) preExistingConditionDialog.findViewById(R.id.cadCheckbox);
-        assert cad != null;
-        cad.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Log.v(TAG, "CAD was selected!!!");
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, cad, hiv, aids, recentUseOfAntibiotic, recentHospitalization, autoimmuneDisease, chronicSteroidUse);
-
-                selectedCheckBox.add(cad);
-
-                notSelectedCheckBox.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBox.add(cancer);
-                notSelectedCheckBox.add(copd);
-                notSelectedCheckBox.add(hiv);
-                notSelectedCheckBox.add(aids);
-                notSelectedCheckBox.add(recentUseOfAntibiotic);
-                notSelectedCheckBox.add(recentHospitalization);
-                notSelectedCheckBox.add(autoimmuneDisease);
-                notSelectedCheckBox.add(chronicSteroidUse);
-
+                notSelectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
+                notSelectedCheckBoxList.add(cancer);
+                notSelectedCheckBoxList.add(hiv);
+                notSelectedCheckBoxList.add(aids);
+                notSelectedCheckBoxList.add(recentUseOfAntibiotic);
+                notSelectedCheckBoxList.add(recentHospitalization);
+                notSelectedCheckBoxList.add(chronicSteroidUse);
+                */
             }
         });
 
@@ -1390,21 +1077,22 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
         hiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                hiv.setEnabled(false);
                 Log.v(TAG, "HIV was selected!!!");
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, cad, hiv, aids, recentUseOfAntibiotic, recentHospitalization, autoimmuneDisease, chronicSteroidUse);
 
-                selectedCheckBox.add(hiv);
+                /*
+                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
 
-                notSelectedCheckBox.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBox.add(cancer);
-                notSelectedCheckBox.add(copd);
-                notSelectedCheckBox.add(cad);
-                notSelectedCheckBox.add(aids);
-                notSelectedCheckBox.add(recentUseOfAntibiotic);
-                notSelectedCheckBox.add(recentHospitalization);
-                notSelectedCheckBox.add(autoimmuneDisease);
-                notSelectedCheckBox.add(chronicSteroidUse);
+                selectedCheckBoxList.add(hiv);
+
+                notSelectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
+                notSelectedCheckBoxList.add(cancer);
+                notSelectedCheckBoxList.add(copd);
+                notSelectedCheckBoxList.add(aids);
+                notSelectedCheckBoxList.add(recentUseOfAntibiotic);
+                notSelectedCheckBoxList.add(recentHospitalization);
+                notSelectedCheckBoxList.add(chronicSteroidUse);
+                */
 
             }
         });
@@ -1416,20 +1104,20 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Log.v(TAG, "AIDS was selected!!!");
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, cad, hiv, aids, recentUseOfAntibiotic, recentHospitalization, autoimmuneDisease, chronicSteroidUse);
+                aids.setEnabled(false);
+                /*
+                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
 
-                selectedCheckBox.add(aids);
+                selectedCheckBoxList.add(aids);
 
-                notSelectedCheckBox.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBox.add(cancer);
-                notSelectedCheckBox.add(copd);
-                notSelectedCheckBox.add(cad);
-                notSelectedCheckBox.add(hiv);
-                notSelectedCheckBox.add(recentUseOfAntibiotic);
-                notSelectedCheckBox.add(recentHospitalization);
-                notSelectedCheckBox.add(autoimmuneDisease);
-                notSelectedCheckBox.add(chronicSteroidUse);
-
+                notSelectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
+                notSelectedCheckBoxList.add(cancer);
+                notSelectedCheckBoxList.add(copd);
+                notSelectedCheckBoxList.add(hiv);
+                notSelectedCheckBoxList.add(recentUseOfAntibiotic);
+                notSelectedCheckBoxList.add(recentHospitalization);
+                notSelectedCheckBoxList.add(chronicSteroidUse);
+                */
             }
         });
 
@@ -1440,20 +1128,20 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Log.v(TAG, "Recent Use of Antibiotic was selected!!!");
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, cad, hiv, aids, recentUseOfAntibiotic, recentHospitalization, autoimmuneDisease, chronicSteroidUse);
+                recentUseOfAntibiotic.setEnabled(false);
+                /*
+                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
 
-                selectedCheckBox.add(recentUseOfAntibiotic);
+                selectedCheckBoxList.add(recentUseOfAntibiotic);
 
-                notSelectedCheckBox.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBox.add(cancer);
-                notSelectedCheckBox.add(copd);
-                notSelectedCheckBox.add(cad);
-                notSelectedCheckBox.add(hiv);
-                notSelectedCheckBox.add(aids);
-                notSelectedCheckBox.add(recentHospitalization);
-                notSelectedCheckBox.add(autoimmuneDisease);
-                notSelectedCheckBox.add(chronicSteroidUse);
-
+                notSelectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
+                notSelectedCheckBoxList.add(cancer);
+                notSelectedCheckBoxList.add(copd);
+                notSelectedCheckBoxList.add(hiv);
+                notSelectedCheckBoxList.add(aids);
+                notSelectedCheckBoxList.add(recentHospitalization);
+                notSelectedCheckBoxList.add(chronicSteroidUse);
+                */
             }
         });
 
@@ -1463,45 +1151,20 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                recentHospitalization.setEnabled(false);
                 Log.v(TAG, "Recent Hospitalization was selected!!!");
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, cad, hiv, aids, recentUseOfAntibiotic, recentHospitalization, autoimmuneDisease, chronicSteroidUse);
+                /*
+                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
 
-                selectedCheckBox.add(recentHospitalization);
+                selectedCheckBoxList.add(recentHospitalization);
 
-                notSelectedCheckBox.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBox.add(cancer);
-                notSelectedCheckBox.add(copd);
-                notSelectedCheckBox.add(cad);
-                notSelectedCheckBox.add(hiv);
-                notSelectedCheckBox.add(aids);
-                notSelectedCheckBox.add(recentUseOfAntibiotic);
-                notSelectedCheckBox.add(autoimmuneDisease);
-                notSelectedCheckBox.add(chronicSteroidUse);
-
-            }
-        });
-
-        autoimmuneDisease = (CheckBox) preExistingConditionDialog.findViewById(R.id.autoimmuneDiseaseCheckbox);
-        assert autoimmuneDisease != null;
-        autoimmuneDisease.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Log.v(TAG, "Autoimmune Disease was selected!!!");
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, cad, hiv, aids, recentUseOfAntibiotic, recentHospitalization, autoimmuneDisease, chronicSteroidUse);
-
-                selectedCheckBox.add(autoimmuneDisease);
-
-                notSelectedCheckBox.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBox.add(cancer);
-                notSelectedCheckBox.add(copd);
-                notSelectedCheckBox.add(cad);
-                notSelectedCheckBox.add(hiv);
-                notSelectedCheckBox.add(aids);
-                notSelectedCheckBox.add(recentUseOfAntibiotic);
-                notSelectedCheckBox.add(recentHospitalization);
-                notSelectedCheckBox.add(chronicSteroidUse);
-
+                notSelectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
+                notSelectedCheckBoxList.add(cancer);
+                notSelectedCheckBoxList.add(hiv);
+                notSelectedCheckBoxList.add(aids);
+                notSelectedCheckBoxList.add(recentUseOfAntibiotic);
+                notSelectedCheckBoxList.add(chronicSteroidUse);
+                */
             }
         });
 
@@ -1512,23 +1175,23 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Log.v(TAG, "Chronic Steroid Use was selected!!!");
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, cad, hiv, aids, recentUseOfAntibiotic, recentHospitalization, autoimmuneDisease, chronicSteroidUse);
+                chronicSteroidUse.setEnabled(false);
+                /*
+                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
 
-                selectedCheckBox.add(chronicSteroidUse);
+                selectedCheckBoxList.add(chronicSteroidUse);
 
-                notSelectedCheckBox.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBox.add(cancer);
-                notSelectedCheckBox.add(copd);
-                notSelectedCheckBox.add(cad);
-                notSelectedCheckBox.add(hiv);
-                notSelectedCheckBox.add(aids);
-                notSelectedCheckBox.add(recentUseOfAntibiotic);
-                notSelectedCheckBox.add(recentHospitalization);
-                notSelectedCheckBox.add(autoimmuneDisease);
+                notSelectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
+                notSelectedCheckBoxList.add(cancer);
+                notSelectedCheckBoxList.add(copd);
+                notSelectedCheckBoxList.add(hiv);
+                notSelectedCheckBoxList.add(aids);
+                notSelectedCheckBoxList.add(recentUseOfAntibiotic);
+                notSelectedCheckBoxList.add(recentHospitalization);
+                */
 
             }
         });
-
 
         Button cancelButton, confirmButton;
 
@@ -1538,32 +1201,33 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // Check for items added to selectedCheckBox list and remove them
-               if (selectedCheckBox.contains(preExistingConditionsYes) && (selectedCheckBox.contains(pregnantOrTwoWeeksPostpartum) || selectedCheckBox.contains(cancer)
-                       || selectedCheckBox.contains(copd) || selectedCheckBox.contains(cad) || selectedCheckBox.contains(hiv) || selectedCheckBox.contains(aids)
-                       || selectedCheckBox.contains(recentUseOfAntibiotic) || selectedCheckBox.contains(recentHospitalization) || selectedCheckBox.contains(autoimmuneDisease)
-                       || selectedCheckBox.contains(chronicSteroidUse))) {
+                /*
+                // Check for items added to selectedCheckBoxList list and remove them
+               if (selectedCheckBoxList.contains(preExistingConditionsYes) && (selectedCheckBoxList.contains(pregnantOrTwoWeeksPostpartum) || selectedCheckBoxList.contains(cancer)
+                       || selectedCheckBoxList.contains(copd) || selectedCheckBoxList.contains(hiv) || selectedCheckBoxList.contains(aids)
+                       || selectedCheckBoxList.contains(recentUseOfAntibiotic) || selectedCheckBoxList.contains(recentHospitalization)
+                       || selectedCheckBoxList.contains(chronicSteroidUse))) {
 
                    // Remove "preExistingYes" and pre existing choice, two items total
-                   for (int i = 1, n = selectedCheckBox.size(); i < 3 ; i++) {
-                       selectedCheckBox.remove(n - i);
+                   for (int i = 1, n = selectedCheckBoxList.size(); i < 3 ; i++) {
+                       selectedCheckBoxList.remove(n - i);
                    }
                    // Remove "preExistingNo" and pre existing choices not selected, ten items total
-                   for (int i = 1, n = notSelectedCheckBox.size(); i < 11 ; i++) {
-                       notSelectedCheckBox.remove(n - i);
+                   for (int i = 1, n = notSelectedCheckBoxList.size(); i < 11 ; i++) {
+                       notSelectedCheckBoxList.remove(n - i);
                    }
-               } else if (selectedCheckBox.contains(preExistingConditionsYes)) {
-                   for (int i = 1, n = selectedCheckBox.size(); i < 2 ; i++) {
-                       selectedCheckBox.remove(n - i);
-                       notSelectedCheckBox.remove(n - i);
+               } else if (selectedCheckBoxList.contains(preExistingConditionsYes)) {
+                   for (int i = 1, n = selectedCheckBoxList.size(); i < 2 ; i++) {
+                       selectedCheckBoxList.remove(n - i);
+                       notSelectedCheckBoxList.remove(n - i);
 
                    }
                }
 
                 // Check for items added to selectedCheckBoxStack and remove them
                 if (selectedCheckBoxStack.contains(preExistingConditionsYes) && (selectedCheckBoxStack.contains(pregnantOrTwoWeeksPostpartum) || selectedCheckBoxStack.contains(cancer)
-                        || selectedCheckBoxStack.contains(copd) || selectedCheckBoxStack.contains(cad) || selectedCheckBoxStack.contains(hiv) || selectedCheckBoxStack.contains(aids)
-                        || selectedCheckBoxStack.contains(recentUseOfAntibiotic) || selectedCheckBoxStack.contains(recentHospitalization) || selectedCheckBoxStack.contains(autoimmuneDisease)
+                        || selectedCheckBoxStack.contains(copd) || selectedCheckBoxStack.contains(hiv) || selectedCheckBoxStack.contains(aids)
+                        || selectedCheckBoxStack.contains(recentUseOfAntibiotic) || selectedCheckBoxStack.contains(recentHospitalization)
                         || selectedCheckBoxStack.contains(chronicSteroidUse))) {
 
                     // Remove "preExistingYes" and pre existing choice, two items total
@@ -1571,7 +1235,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                         selectedCheckBoxStack.remove(n - i);
                     }
                     // Remove "preExistingNo" and pre existing choices not selected, ten items total
-                    for (int i = 1, n = notSelectedCheckBoxStack.size(); i < 11 ; i++) {
+                    for (int i = 1, n = notSelectedCheckBoxStack.size(); i < 9 ; i++) {
                         notSelectedCheckBoxStack.remove(n - i);
                     }
                 } else if (selectedCheckBoxStack.contains(preExistingConditionsYes)) {
@@ -1581,13 +1245,13 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
                     }
                 }
-
+                */
                 // Debug Stuff --> --> --> -->
                 Log.v(TAG, "Cancel Button from Pre Existing Conditions Dialog was Clicked!");
                 Log.v(TAG, "This is the selected checkbox list:");
-                printSelectionList(selectedCheckBox);
+                printSelectionList(selectedCheckBoxList);
                 Log.v(TAG, "This is the not selected checkbox list:");
-                printSelectionList(notSelectedCheckBox);
+                printSelectionList(notSelectedCheckBoxList);
 
                 resetCheckBoxOnCancel(preExistingConditionsYes, preExistingConditionsNo);
                 preExistingConditionDialog.cancel();
@@ -1604,6 +1268,8 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                 Log.v(TAG, "Confirm Button from pre existing Dialog was Clicked!");
             }
         });
+
+        return preExistingConditionDialog;
     } // Closes pre-existing dialog method
 
     /*
@@ -1615,54 +1281,23 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
         no.setEnabled(true);
         yes.setChecked(false);
         no.setChecked(false);
+        yes.setClickable(true);
+        no.setClickable(true);
     }
 
     /*
-            This methods disables two checkboxes
+            This method disables the first checkbox parameter, sets the second checkbox parameter unclickable and adds both checkbox
+            parameters to their corresponding lists.
      */
-    private void disable(CheckBox yes, CheckBox no) {
-        yes.setEnabled(false);
-        no.setEnabled(false);
-    }
-
-    /*
-           This methods disables three checkboxes
-    */
-    private void disable(CheckBox cb1, CheckBox cb2, CheckBox cb3) {
-        cb1.setEnabled(false);
-        cb2.setEnabled(false);
-        cb3.setEnabled(false);
-    }
-
-    /*
-            This methods disables ten checkboxes
-    */
-    private void disable(CheckBox cb1, CheckBox cb2, CheckBox cb3, CheckBox cb4, CheckBox cb5, CheckBox cb6, CheckBox cb7, CheckBox cb8, CheckBox cb9, CheckBox cb10) {
-
-        cb1.setEnabled(false);
-        cb2.setEnabled(false);
-        cb3.setEnabled(false);
-        cb4.setEnabled(false);
-        cb5.setEnabled(false);
-        cb6.setEnabled(false);
-        cb7.setEnabled(false);
-        cb8.setEnabled(false);
-        cb9.setEnabled(false);
-        cb10.setEnabled(false);
+    private void addCheckBox(CheckBox chosen, CheckBox notChosen, ArrayList<CheckBox> selectedList, ArrayList<CheckBox> notSelectedList) {
+        chosen.setEnabled(false);
+        notChosen.setClickable(false);
+        selectedList.add(chosen);
+        notSelectedList.add(notChosen);
     }
 
 
-    // Debug Stuff --> --> --> --> --> --> --> --> --> -->
-    /*
-            This method prints a stack to the console
-    */
-    private void printSelectionStack(Stack<CheckBox> inputStack) {
-
-        for (CheckBox cb : inputStack) {
-            Log.v(TAG, cb.toString());
-        }
-
-    }
+    // Debug Stuff --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> --> -->
 
     /*
             This method prints an array list to the console

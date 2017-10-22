@@ -87,12 +87,13 @@
                 android:textColor="@drawable/checkbox_edit"
                 android:layout_marginLeft="10dp"/>
 
+
             <CheckBox
-                android:id="@+id/cadCheckbox"
+                android:id="@+id/chronicSteroidUseCheckbox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/cad"
+                android:text="@string/chronic_steroid_use"
                 android:textSize="20sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"/>
@@ -157,38 +158,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/recent_hospitalization"
-                android:textSize="20sp"
-                android:buttonTint="@drawable/checkbox_edit"
-                android:textColor="@drawable/checkbox_edit"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/fifthChoicesPreExistingConditions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@id/fourthChoicesPreExistingConditions"
-            android:padding="10dp"
-            android:gravity="center">
-
-            <CheckBox
-                android:id="@+id/autoimmuneDiseaseCheckbox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/autoimmune_disease"
-                android:textSize="20sp"
-                android:buttonTint="@drawable/checkbox_edit"
-                android:textColor="@drawable/checkbox_edit"
-                android:layout_marginLeft="10dp"/>
-
-            <CheckBox
-                android:id="@+id/chronicSteroidUseCheckbox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/chronic_steroid_use"
                 android:textSize="20sp"
                 android:buttonTint="@drawable/checkbox_edit"
                 android:textColor="@drawable/checkbox_edit"/>
