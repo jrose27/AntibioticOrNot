@@ -993,11 +993,9 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
 
         ////////////// CheckBox Instantiation Pre Existing Conditions Dialog //////////////////
-        /*
-            Add Listeners for all the check boxes in Pre Existing Dialog
-            Add selections to their appropriate List
 
-        */
+        // Add Listeners for all the check boxes in Pre Existing Dialog
+
         pregnantOrTwoWeeksPostpartum = (CheckBox) preExistingConditionDialog.findViewById(R.id.pregnantPostpartumCheckbox);
         assert pregnantOrTwoWeeksPostpartum != null;
         pregnantOrTwoWeeksPostpartum.setOnClickListener(new View.OnClickListener() {
@@ -1006,19 +1004,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
                 Log.v(TAG, "Pregnant Postpartum was selected!!!");
                 pregnantOrTwoWeeksPostpartum.setEnabled(false);
-                /*
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
 
-                selectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
-
-                notSelectedCheckBoxList.add(cancer);
-                notSelectedCheckBoxList.add(copd);
-                notSelectedCheckBoxList.add(hiv);
-                notSelectedCheckBoxList.add(aids);
-                notSelectedCheckBoxList.add(recentUseOfAntibiotic);
-                notSelectedCheckBoxList.add(recentHospitalization);
-                notSelectedCheckBoxList.add(chronicSteroidUse);
-                */
             }
         });
 
@@ -1032,19 +1018,6 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                 cancer.setEnabled(false);
                 Log.v(TAG, "Cancer was selected!!!");
 
-                 /*
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
-
-                selectedCheckBoxList.add(cancer);
-
-                notSelectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBoxList.add(copd);
-                notSelectedCheckBoxList.add(hiv);
-                notSelectedCheckBoxList.add(aids);
-                notSelectedCheckBoxList.add(recentUseOfAntibiotic);
-                notSelectedCheckBoxList.add(recentHospitalization);
-                notSelectedCheckBoxList.add(chronicSteroidUse);
-                */
             }
         });
 
@@ -1056,19 +1029,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
                 Log.v(TAG, "COPD was selected!!!");
                 copd.setEnabled(false);
-                /*
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
 
-                selectedCheckBoxList.add(copd);
-
-                notSelectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBoxList.add(cancer);
-                notSelectedCheckBoxList.add(hiv);
-                notSelectedCheckBoxList.add(aids);
-                notSelectedCheckBoxList.add(recentUseOfAntibiotic);
-                notSelectedCheckBoxList.add(recentHospitalization);
-                notSelectedCheckBoxList.add(chronicSteroidUse);
-                */
             }
         });
 
@@ -1080,19 +1041,6 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
                 hiv.setEnabled(false);
                 Log.v(TAG, "HIV was selected!!!");
 
-                /*
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
-
-                selectedCheckBoxList.add(hiv);
-
-                notSelectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBoxList.add(cancer);
-                notSelectedCheckBoxList.add(copd);
-                notSelectedCheckBoxList.add(aids);
-                notSelectedCheckBoxList.add(recentUseOfAntibiotic);
-                notSelectedCheckBoxList.add(recentHospitalization);
-                notSelectedCheckBoxList.add(chronicSteroidUse);
-                */
 
             }
         });
@@ -1105,19 +1053,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
                 Log.v(TAG, "AIDS was selected!!!");
                 aids.setEnabled(false);
-                /*
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
 
-                selectedCheckBoxList.add(aids);
-
-                notSelectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBoxList.add(cancer);
-                notSelectedCheckBoxList.add(copd);
-                notSelectedCheckBoxList.add(hiv);
-                notSelectedCheckBoxList.add(recentUseOfAntibiotic);
-                notSelectedCheckBoxList.add(recentHospitalization);
-                notSelectedCheckBoxList.add(chronicSteroidUse);
-                */
             }
         });
 
@@ -1129,19 +1065,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
                 Log.v(TAG, "Recent Use of Antibiotic was selected!!!");
                 recentUseOfAntibiotic.setEnabled(false);
-                /*
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
 
-                selectedCheckBoxList.add(recentUseOfAntibiotic);
-
-                notSelectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBoxList.add(cancer);
-                notSelectedCheckBoxList.add(copd);
-                notSelectedCheckBoxList.add(hiv);
-                notSelectedCheckBoxList.add(aids);
-                notSelectedCheckBoxList.add(recentHospitalization);
-                notSelectedCheckBoxList.add(chronicSteroidUse);
-                */
             }
         });
 
@@ -1153,18 +1077,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
                 recentHospitalization.setEnabled(false);
                 Log.v(TAG, "Recent Hospitalization was selected!!!");
-                /*
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
 
-                selectedCheckBoxList.add(recentHospitalization);
-
-                notSelectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBoxList.add(cancer);
-                notSelectedCheckBoxList.add(hiv);
-                notSelectedCheckBoxList.add(aids);
-                notSelectedCheckBoxList.add(recentUseOfAntibiotic);
-                notSelectedCheckBoxList.add(chronicSteroidUse);
-                */
             }
         });
 
@@ -1176,19 +1089,6 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
                 Log.v(TAG, "Chronic Steroid Use was selected!!!");
                 chronicSteroidUse.setEnabled(false);
-                /*
-                disable(pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse);
-
-                selectedCheckBoxList.add(chronicSteroidUse);
-
-                notSelectedCheckBoxList.add(pregnantOrTwoWeeksPostpartum);
-                notSelectedCheckBoxList.add(cancer);
-                notSelectedCheckBoxList.add(copd);
-                notSelectedCheckBoxList.add(hiv);
-                notSelectedCheckBoxList.add(aids);
-                notSelectedCheckBoxList.add(recentUseOfAntibiotic);
-                notSelectedCheckBoxList.add(recentHospitalization);
-                */
 
             }
         });
@@ -1201,51 +1101,6 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                /*
-                // Check for items added to selectedCheckBoxList list and remove them
-               if (selectedCheckBoxList.contains(preExistingConditionsYes) && (selectedCheckBoxList.contains(pregnantOrTwoWeeksPostpartum) || selectedCheckBoxList.contains(cancer)
-                       || selectedCheckBoxList.contains(copd) || selectedCheckBoxList.contains(hiv) || selectedCheckBoxList.contains(aids)
-                       || selectedCheckBoxList.contains(recentUseOfAntibiotic) || selectedCheckBoxList.contains(recentHospitalization)
-                       || selectedCheckBoxList.contains(chronicSteroidUse))) {
-
-                   // Remove "preExistingYes" and pre existing choice, two items total
-                   for (int i = 1, n = selectedCheckBoxList.size(); i < 3 ; i++) {
-                       selectedCheckBoxList.remove(n - i);
-                   }
-                   // Remove "preExistingNo" and pre existing choices not selected, ten items total
-                   for (int i = 1, n = notSelectedCheckBoxList.size(); i < 11 ; i++) {
-                       notSelectedCheckBoxList.remove(n - i);
-                   }
-               } else if (selectedCheckBoxList.contains(preExistingConditionsYes)) {
-                   for (int i = 1, n = selectedCheckBoxList.size(); i < 2 ; i++) {
-                       selectedCheckBoxList.remove(n - i);
-                       notSelectedCheckBoxList.remove(n - i);
-
-                   }
-               }
-
-                // Check for items added to selectedCheckBoxStack and remove them
-                if (selectedCheckBoxStack.contains(preExistingConditionsYes) && (selectedCheckBoxStack.contains(pregnantOrTwoWeeksPostpartum) || selectedCheckBoxStack.contains(cancer)
-                        || selectedCheckBoxStack.contains(copd) || selectedCheckBoxStack.contains(hiv) || selectedCheckBoxStack.contains(aids)
-                        || selectedCheckBoxStack.contains(recentUseOfAntibiotic) || selectedCheckBoxStack.contains(recentHospitalization)
-                        || selectedCheckBoxStack.contains(chronicSteroidUse))) {
-
-                    // Remove "preExistingYes" and pre existing choice, two items total
-                    for (int i = 1, n = selectedCheckBoxStack.size(); i < 3 ; i++) {
-                        selectedCheckBoxStack.remove(n - i);
-                    }
-                    // Remove "preExistingNo" and pre existing choices not selected, ten items total
-                    for (int i = 1, n = notSelectedCheckBoxStack.size(); i < 9 ; i++) {
-                        notSelectedCheckBoxStack.remove(n - i);
-                    }
-                } else if (selectedCheckBoxStack.contains(preExistingConditionsYes)) {
-                    for (int i = 1, n = selectedCheckBoxStack.size(); i < 2; i++) {
-                        selectedCheckBoxStack.remove(n - i);
-                        notSelectedCheckBoxStack.remove(n - i);
-
-                    }
-                }
-                */
                 // Debug Stuff --> --> --> -->
                 Log.v(TAG, "Cancel Button from Pre Existing Conditions Dialog was Clicked!");
                 Log.v(TAG, "This is the selected checkbox list:");
