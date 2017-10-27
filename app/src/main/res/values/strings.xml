@@ -65,13 +65,13 @@
 
     <!-- Antibiotic Facts Dialog -->
     <string name="fact_list_title_text">Antibiotic Awareness Facts</string>
-    <string name="fact_one">1. The common cold includes nasal congestion, runny nose (discharge can be clear or yellow-green), sore throat, cough, fatigue, low grade fever, sneezing and headache.</string>
-    <string name="fact_two">2. The common cold lasts from 3-10 days and longer in smokers.</string>
-    <string name="fact_three">3.  The common cold is differentiated from viral or allergic nasal inflammation by the presence sore throat and cough.</string>
-    <string name="fact_four">4. The common cold can be differentiated from bacterial tonsillitis (pharyngitis or tonsil infection) by the presence of runny nose and nasal congestion.</string>
-    <string name="fact_five">5. No antibiotics are needed to treat the common cold.</string>
-    <string name="fact_six">6. Pharyngitis (infection of the throat and glands) symptoms include sore throat, fever, fatigue, swollen neck glands, and +/- watch patches at the back of the throat. Usually pharyngitis requires antibiotics.</string>
-    <string name="fact_seven">7. If there is no fever but there is a cough with pharyngitis symptoms, no antibiotics are needed.</string>
+    <string name="fact_one">The common cold includes nasal congestion, runny nose (discharge can be clear or yellow-green), sore throat, cough, fatigue, low grade fever, sneezing and headache.</string>
+    <string name="fact_two">The common cold lasts from 3-10 days and longer in smokers.</string>
+    <string name="fact_three">The common cold is differentiated from viral or allergic nasal inflammation by the presence sore throat and cough.</string>
+    <string name="fact_four">The common cold can be differentiated from bacterial tonsillitis (pharyngitis or tonsil infection) by the presence of runny nose and nasal congestion.</string>
+    <string name="fact_five">No antibiotics are needed to treat the common cold.</string>
+    <string name="fact_six">Pharyngitis (infection of the throat and glands) symptoms include sore throat, fever, fatigue, swollen neck glands, and +/- watch patches at the back of the throat. Usually pharyngitis requires antibiotics.</string>
+    <string name="fact_seven">If there is no fever but there is a cough with pharyngitis symptoms, no antibiotics are needed.</string>
     <string name="fact_eight">The common cold can cause and lead to sinusitis, lower respiratory tract infection, asthma exacerbation and ear infections.</string>
     <string name="fact_nine">Acute sinusitis includes symptoms of facial pain, clear or yellow-green nasal discharge, nasal obstruction.</string>
     <string name="fact_ten">The most common cause of acute sinusitis is viral infections. Therefore no antibiotics are recommended unless patient has fevers >102 or other risk factors.</string>
