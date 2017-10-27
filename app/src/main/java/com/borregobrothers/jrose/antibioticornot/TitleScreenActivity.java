@@ -26,7 +26,7 @@ public class TitleScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start the new activity
-                startActivity(new Intent(TitleScreenActivity.this, QuestionnaireOneActivity.class));
+                startActivity(new Intent(TitleScreenActivity.this, MainQuestionnaireActivity.class));
                 Log.v(TAG, "Start Button was Clicked!");
             }
         });

@@ -21,7 +21,7 @@ import java.util.ArrayList;
         It contains six dialogs implemented in methods and after the onCreate method.
         The onCreate methods contains all listener methods for the checkboxes selected.
  */
-public class QuestionnaireOneActivity extends AppCompatActivity {
+public class MainQuestionnaireActivity extends AppCompatActivity {
 
     private final static String TAG = " Look for StUpId --> ";
 
@@ -51,7 +51,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_questionnaire_one_layout);
+        setContentView(R.layout.activity_main_questionnaire_layout);
 
         /*
                 The listener method displays the fever alert dialog if the "yes" checkbox for
@@ -739,7 +739,7 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
 
                 Log.v(TAG, "Done Button from Result No Dialog was Clicked!");
                 // User confirms so reset app
-                startActivity(new Intent(QuestionnaireOneActivity.this, TitleScreenActivity.class));
+                startActivity(new Intent(MainQuestionnaireActivity.this, TitleScreenActivity.class));
                 antibioticFactDialog.dismiss();
             }
         });
@@ -1160,7 +1160,9 @@ public class QuestionnaireOneActivity extends AppCompatActivity {
     private void printSelectionList(ArrayList<CheckBox> inputList) {
 
         for (CheckBox cb : inputList) {
-          Log.v(TAG, cb.toString());
+            Log.v(TAG, cb.getText().toString());
+
+            // Integer.toString(cb.getId())
         }
     }
 
