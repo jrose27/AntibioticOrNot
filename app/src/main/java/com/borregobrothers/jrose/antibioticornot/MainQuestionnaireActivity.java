@@ -608,9 +608,9 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Debug Stuff --> --> --> // Debug Stuff --> --> -->
-                Log.v(TAG, "This is the selected checkbox list:");
+                Log.v(TAG, "This is the selected checkbox list: --> --> --> -->");
                 printSelectionList(selectedCheckBoxList);
-                Log.v(TAG, "This is the not selected list");
+                Log.v(TAG, "This is the not selected list: --> --> --> -->");
                 printSelectionList(notSelectedCheckBoxList);
 
                 /*
@@ -1160,9 +1160,8 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
     private void printSelectionList(ArrayList<CheckBox> inputList) {
 
         for (CheckBox cb : inputList) {
-            Log.v(TAG, cb.getText().toString());
+            Log.v(TAG, "ID Number --> " + Integer.toString(cb.getId()) + " \nText Value --> " + cb.getText().toString());
 
-            // Integer.toString(cb.getId())
         }
     }
 
