@@ -65,19 +65,30 @@
 
     <!-- Antibiotic Facts Dialog -->
     <string name="fact_list_title_text">Antibiotic Awareness Facts</string>
-    <string name="fact_one">1. Antibiotics will give you terrible gas sometimes.</string>
-    <string name="fact_two">2. Antibiotics can kill the good bacteria in your gut disrupting your chi and throwing your body out of symbiotic balance.</string>
-    <string name="fact_three">3. Antibiotic over use is going to plague us all the fatter and weaker we become as a society.</string>
-    <string name="fact_four">4. If you smell like a goat, take a bath!</string>
-    <string name="fact_five">5. Don\'t eat yellow snow.</string>
-    <string name="fact_six">6. Antibiotic overuse is responsible for the evolution of super bugs.</string>
-    <string name="fact_seven">7. Your gut is responsible for properly processing nutrients from food that nourish your body.</string>
-    <string name="fact_eight">If your faith in Jesus is strong enough antibiotics are pointless.</string>
-    <string name="fact_nine">Antibiotics are effective at eliminating bacteria that cause illness.</string>
-    <string name="fact_ten">Antibiotics are ineffective at eliminating viruses that cause illness.</string>
-    <string name="fact_eleven">Antibiotics are bad.</string>
-    <string name="fact_twelve">Antibiotics are good.</string>
-    <string name="fact_thirteen">Antibiotics should be used in moderation.</string>
+    <string name="fact_one">1. The common cold includes nasal congestion, runny nose (discharge can be clear or yellow-green), sore throat, cough, fatigue, low grade fever, sneezing and headache.</string>
+    <string name="fact_two">2. The common cold lasts from 3-10 days and longer in smokers.</string>
+    <string name="fact_three">3.  The common cold is differentiated from viral or allergic nasal inflammation by the presence sore throat and cough.</string>
+    <string name="fact_four">4. The common cold can be differentiated from bacterial tonsillitis (pharyngitis or tonsil infection) by the presence of runny nose and nasal congestion.</string>
+    <string name="fact_five">5. No antibiotics are needed to treat the common cold.</string>
+    <string name="fact_six">6. Pharyngitis (infection of the throat and glands) symptoms include sore throat, fever, fatigue, swollen neck glands, and +/- watch patches at the back of the throat. Usually pharyngitis requires antibiotics.</string>
+    <string name="fact_seven">7. If there is no fever but there is a cough with pharyngitis symptoms, no antibiotics are needed.</string>
+    <string name="fact_eight">The common cold can cause and lead to sinusitis, lower respiratory tract infection, asthma exacerbation and ear infections.</string>
+    <string name="fact_nine">Acute sinusitis includes symptoms of facial pain, clear or yellow-green nasal discharge, nasal obstruction.</string>
+    <string name="fact_ten">The most common cause of acute sinusitis is viral infections. Therefore no antibiotics are recommended unless patient has fevers >102 or other risk factors.</string>
+    <string name="fact_eleven">Acute viral sinusitis is expected to improve within 10 days without the use of antibiotics. Nasal discharge starts clear but may turn yellow-green later in the illness.</string>
+    <string name="fact_twelve">Acute bacterial sinusitis lasts longer than 10 days, causes high fevers (>102), and nasal discharge is yellow-green within the first 3 days of illness.</string>
+    <string name="fact_thirteen">Acute bronchitis includes cough, sputum production and lasts at least 5 days. Wheezing and shortness of breath are also symptoms of acute bronchitis.</string>
+    <string name="fact_fourteen">Influenza symptoms include high fever, cough, headache. muscle and body aches. Antivirals are recommended to treat influenza.</string>
+    <string name="fact_fifteen">Pertussis is similar to the common cold but has prolonged coughing and will require antibiotics.</string>
+    <string name="fact_sixteen">The majority of upper respiratory infections are transmitted by hand contact. Viruses remain alive on human skin for 2 hrs. therefore hand washing is important to prevent the spread of disease.</string>
+
+    <!--
+
+
+
+
+
+    -->
 
     <!-- A string array to hold all the facts -->
     <string-array name="fact_array">
