@@ -692,7 +692,7 @@
                     android:textColor="@drawable/checkbox_edit"
                     android:textSize="18sp"
                     android:padding="5dp"
-                    android:layout_marginLeft="80dp"/>
+                    android:layout_marginLeft="32dp" />
 
                 <CheckBox
                     android:id="@+id/moreThanSevenDays"
@@ -703,7 +703,8 @@
                     android:buttonTint="@drawable/checkbox_edit"
                     android:textColor="@drawable/checkbox_edit"
                     android:textSize="18sp"
-                    android:padding="5dp"/>
+                    android:padding="5dp"
+                    android:layout_marginLeft="10dp" />
             </LinearLayout>
         </LinearLayout>
 

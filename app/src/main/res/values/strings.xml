@@ -24,7 +24,7 @@
     <string name="no">No</string>
 
     <!-- Symptoms Time Length -->
-    <string name="less_than_seven_days">Less Than 7 Days</string>
+    <string name="less_than_seven_days">Less Than or Equal To 7 Days</string>
     <string name="more_than_seven_days">More Than 7 Days</string>
 
     <!-- Button Strings -->
@@ -48,7 +48,7 @@
 
     <!-- Pre-existing Conditions Dialog -->
     <string name="pre_existing_conditions_dialog_title_text">Pre-existing Conditions</string>
-    <string name="pre_existing_conditions_info_text">Please select any of the pre-existing conditions that apply to you?</string>
+    <string name="pre_existing_conditions_info_text">Please select any of the pre-existing conditions that apply to you.</string>
     <string name="pregnant_or_two_weeks_postpartum">Pregnant or Two Weeks Postpartum</string>
     <string name="cancer">Active Cancer</string>
     <string name="copd">Chronic Obstructive Pulmonary Disease (COPD)</string>
@@ -64,35 +64,27 @@
     <string name="nasal_congestion_label_text">Nasal Congestion</string>
 
     <!-- Antibiotic Facts Dialog -->
+    <!-- Bullet points in front of facts are added in the "MainQuestionnaireActivity.java" in createAntibioticFactDialog() method -->
     <string name="fact_list_title_text">Antibiotic Awareness Facts</string>
     <string name="fact_one">The common cold includes nasal congestion, runny nose (discharge can be clear or yellow-green), sore throat, cough, fatigue, low grade fever, sneezing and headache.</string>
     <string name="fact_two">The common cold lasts from 3-10 days and longer in smokers.</string>
-    <string name="fact_three">The common cold is differentiated from viral or allergic nasal inflammation by the presence sore throat and cough.</string>
+    <string name="fact_three">The common cold is differentiated from viral or allergic nasal inflammation by the presence of sore throat and cough.</string>
     <string name="fact_four">The common cold can be differentiated from bacterial tonsillitis (pharyngitis or tonsil infection) by the presence of runny nose and nasal congestion.</string>
     <string name="fact_five">No antibiotics are needed to treat the common cold.</string>
-    <string name="fact_six">Pharyngitis (infection of the throat and glands) symptoms include sore throat, fever, fatigue, swollen neck glands, and +/- watch patches at the back of the throat. Usually pharyngitis requires antibiotics.</string>
+    <string name="fact_six">Pharyngitis (infection of the throat and glands) symptoms include sore throat, fever, fatigue, swollen neck glands, and with or without watch patches in the back of the throat. Usually pharyngitis requires antibiotics.</string>
     <string name="fact_seven">If there is no fever but there is a cough with pharyngitis symptoms, no antibiotics are needed.</string>
     <string name="fact_eight">The common cold can cause and lead to sinusitis, lower respiratory tract infection, asthma exacerbation and ear infections.</string>
     <string name="fact_nine">Acute sinusitis includes symptoms of facial pain, clear or yellow-green nasal discharge, nasal obstruction.</string>
-    <string name="fact_ten">The most common cause of acute sinusitis is viral infections. Therefore no antibiotics are recommended unless patient has fevers >102 or other risk factors.</string>
-    <string name="fact_eleven">Acute viral sinusitis is expected to improve within 10 days without the use of antibiotics. Nasal discharge starts clear but may turn yellow-green later in the illness.</string>
+    <string name="fact_ten">The most common cause of acute sinusitis is viral infections. Therefore no antibiotics are recommended unless patient has fever  greater than or equal to 102 or other risk factors.</string>
+    <string name="fact_eleven">Acute viral sinusitis is expected to improve within 10 days without the use of antibiotics. Nasal discharge starts clear in viral sinusitis but may turn yellow-green later in the illness.</string>
     <string name="fact_twelve">Acute bacterial sinusitis lasts longer than 10 days, causes high fevers (>102), and nasal discharge is yellow-green within the first 3 days of illness.</string>
     <string name="fact_thirteen">Acute bronchitis includes cough, sputum production and lasts at least 5 days. Wheezing and shortness of breath are also symptoms of acute bronchitis.</string>
     <string name="fact_fourteen">Influenza symptoms include high fever, cough, headache. muscle and body aches. Antivirals are recommended to treat influenza.</string>
     <string name="fact_fifteen">Pertussis is similar to the common cold but has prolonged coughing and will require antibiotics.</string>
     <string name="fact_sixteen">The majority of upper respiratory infections are transmitted by hand contact. Viruses remain alive on human skin for 2 hrs. therefore hand washing is important to prevent the spread of disease.</string>
 
-    <!--
-
-
-
-
-
-    -->
-
     <!-- A string array to hold all the facts -->
     <string-array name="fact_array">
-
         <item>@string/fact_one</item>
         <item>@string/fact_two</item>
         <item>@string/fact_three</item>
@@ -106,7 +98,28 @@
         <item>@string/fact_eleven</item>
         <item>@string/fact_twelve</item>
         <item>@string/fact_thirteen</item>
+        <item>@string/fact_fourteen</item>
+        <item>@string/fact_fifteen</item>
+        <item>@string/fact_sixteen</item>
+    </string-array>
 
+    <!-- Over The Counter Remedies Dialog -->
+    <string name="remedy_list_title_text">Over The Counter Remedies</string>
+    <string name="remedy_1">Wash your nasty Ass!</string>
+    <string name="remedy_2">Eat vegetables.</string>
+    <string name="remedy_3">Don\'t talk to loose women.</string>
+    <string name="remedy_4">Walk an hour a day.</string>
+    <string name="remedy_5">Eat fruit.</string>
+    <string name="remedy_6">Always rember to breath.</string>
+    <string name="remedy_button_text">OTC Remedies</string>
+
+    <string-array name="remedy_array">
+        <item>@string/remedy_1</item>
+        <item>@string/remedy_2</item>
+        <item>@string/remedy_3</item>
+        <item>@string/remedy_4</item>
+        <item>@string/remedy_5</item>
+        <item>@string/remedy_6</item>
     </string-array>
 
 </resources>

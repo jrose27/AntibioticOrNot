@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 /*
@@ -43,10 +42,10 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
     private CheckBox pregnantOrTwoWeeksPostpartum, cancer, copd, hiv, aids, recentUseOfAntibiotic, recentHospitalization, chronicSteroidUse;
 
     // Make an ArrayList to hold all the values of the selected checkboxes
-    private ArrayList<CheckBox> selectedCheckBoxList = new ArrayList<CheckBox>();
+    private ArrayList<CheckBox> selectedCheckBoxList = new ArrayList<>();
 
     // Make an ArrayList to hold all the values of the checkboxes not selected
-    private ArrayList<CheckBox> notSelectedCheckBoxList = new ArrayList<CheckBox>();
+    private ArrayList<CheckBox> notSelectedCheckBoxList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -578,7 +577,7 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Prompt the user to  make sure the selections made are the correct answers
+                // Prompt the user to  make sure the selections they made are the correct answers
                 createSelectionConformationDialog();
                 Log.v(TAG, "The result button was clicked!");
 ;
@@ -684,7 +683,7 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
         resultNoDialog.setTitle("You Do Not Need An Antibiotic!");
         resultNoDialog.show();
 
-        Button doneButton;
+        Button doneButton, remedyButton;
 
         doneButton = (Button) resultNoDialog.findViewById(R.id.doneButton);
         assert doneButton != null;
@@ -699,6 +698,16 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
             }
         });
 
+        remedyButton = (Button) resultNoDialog.findViewById(R.id.remedyButton);
+        assert remedyButton != null;
+        remedyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createOTCRemediesDialog();
+                resultNoDialog.dismiss();
+            }
+        });
+
         return resultNoDialog;
     }
 
@@ -709,21 +718,22 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Please scroll down to see all facts.", Toast.LENGTH_SHORT).show();
 
-
         // Create a string array and populate it with the string array from the "string.xml" file
         String[] factArray = getResources().getStringArray(R.array.fact_array);
 
         // Create an ArrayList to add the "factArray" to, this is to add the index number to the output.
-        // ArrayList<String> factArrayList = new ArrayList<String>();
+        ArrayList<String> factArrayList = new ArrayList<>();
 
-        // Populate the "factArrayList" with facts from the "factArray" and add number order to list
-        // for (int i = 0; i < factArray.length; i++) {
-        // factArrayList.add( (i + 1) + ". " + factArray[i]);
-        // }
+        // Populate the "factArrayList" with facts from the "factArray" and add bullet point to list
+        // "\u2022" = unicode for bullet point
+        for (int i = 0; i < factArray.length; i++) {
+            factArrayList.add("\u2022 " + factArray[i]);
+        }
+
 
         //Initialize ArrayAdapter to pass to ListView
                                         /*Context,             layout,             array or arrayList*/
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.custom_list_view, factArray);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.custom_list_view, factArrayList);
 
         // Create ListView object and link to reference in activity_main.xml
         // Only need to link the ListView in onCreate
@@ -754,35 +764,6 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
         resultYesAntibioticDialog.show();
 
         Button doneButton;
-
-        /*
-        cancelButton
-        cancelButton = (Button) resultYesAntibioticDialog.findViewById(R.id.cancelButton);
-        assert cancelButton != null;
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Log.v(TAG, "Cancel Button from the result yes dialog was selected!");
-
-                // User cancels so reset all check boxes
-                for (CheckBox selected : selectedCheckBoxList) {
-                    selected.setEnabled(true);
-                    selected.setChecked(false);
-                }
-
-                for (CheckBox notSelected : notSelectedCheckBoxList) {
-                    notSelected.setEnabled(true);
-                    notSelected.setChecked(false);
-                }
-
-                // The selected checkbox list and not selected checkbox list need to be cleared
-                selectedCheckBoxList = new ArrayList<CheckBox>();
-                notSelectedCheckBoxList = new ArrayList<CheckBox>();
-                resultYesAntibioticDialog.cancel();
-            }
-        });
-*/
         doneButton = (Button) resultYesAntibioticDialog.findViewById(R.id.doneButton);
         assert doneButton != null;
         doneButton.setOnClickListener(new View.OnClickListener() {
@@ -797,6 +778,51 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
         });
 
         return resultYesAntibioticDialog;
+    }
+
+    private Dialog createOTCRemediesDialog() {
+        final Dialog remedyDialog = new Dialog(this);
+        remedyDialog.setContentView(R.layout.dialog_remedy_layout);
+        remedyDialog.show();
+
+        Toast.makeText(this, "Please scroll down to see all the OTC remedies.", Toast.LENGTH_SHORT).show();
+
+        // Create a string array and populate it with the string array from the "string.xml" file
+        String[] remedyArray = getResources().getStringArray(R.array.remedy_array);
+
+        // Create an ArrayList to add the "factArray" to, this is to add the index number to the output.
+        ArrayList<String> remedyArrayList = new ArrayList<>();
+
+        // Populate the "factArrayList" with facts from the "factArray" and add bullet point to list
+        // "\u2022" = unicode for bullet point
+
+        for (String remedy : remedyArray) {
+            remedyArrayList.add("\u2022 " + remedy);
+        }
+
+        //Initialize ArrayAdapter to pass to ListView
+                                                        /*Context,    list view layout,             array or arrayList*/
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.custom_list_view, remedyArrayList);
+
+        // Create ListView object and link to reference in activity_main.xml
+        // Only need to link the ListView in onCreate
+        ListView remedyListView = (ListView) remedyDialog.findViewById(R.id.remedyListView);
+        remedyListView.setAdapter(adapter); // Assign the ArrayAdapter to the ListView object
+
+        Button doneButton;
+        doneButton = (Button) remedyDialog.findViewById(R.id.remedyDoneButton);
+        assert doneButton != null;
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.v(TAG, "Done Button from Result Yes Dialog was Clicked!");
+
+                remedyDialog.dismiss();
+                createAntibioticFactDialog();
+            }
+        });
+        return remedyDialog;
     }
 
     /*
@@ -850,16 +876,16 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
                  */
                 if (selectedCheckBoxList.contains(feverYes) && (selectedCheckBoxList.contains(lowFeverRange) || selectedCheckBoxList.contains(highFeverRange))) {
 
-                    for (int i = 1, n = selectedCheckBoxList.size(); i < 3; i++) {
+                    for (int i = 1, n = selectedCheckBoxList.size(), m = notSelectedCheckBoxList.size(); i < 3; i++) {
                         selectedCheckBoxList.remove(n - i);
-                        notSelectedCheckBoxList.remove(n - i);
+                        notSelectedCheckBoxList.remove(m - i);
                     }
-
 
                 } else if (selectedCheckBoxList.contains(feverYes)) {
 
                     int n = selectedCheckBoxList.size();
                     selectedCheckBoxList.remove(n - 1);
+                    n = notSelectedCheckBoxList.size();
                     notSelectedCheckBoxList.remove(n - 1);
 
                 }
@@ -940,10 +966,11 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
 
                     // Remove "nasalDischargeYes" and nasal discharge choice, two items total
                     // Remove "nasalDischargeNo" and nasal discharge choice not selected, two items total
-                    for (int i = 1, n = selectedCheckBoxList.size(); i < 3; i++) {
+                    // "m" variable is for when the list are different sizes
+                    for (int i = 1, n = selectedCheckBoxList.size(), m = notSelectedCheckBoxList.size(); i < 3; i++) {
                         selectedCheckBoxList.remove(n - i);
 
-                        notSelectedCheckBoxList.remove(n - i);
+                        notSelectedCheckBoxList.remove(m - i);
                     }
 
                 } else if (selectedCheckBoxList.contains(nasalCongestionYes)) {
@@ -952,6 +979,8 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
                     // Remove "nasalDischargeNo", one item total
                     int n = selectedCheckBoxList.size();
                     selectedCheckBoxList.remove(n - 1);
+                    // Reset "n" to account for the possibility the lists are different sizes
+                    n = notSelectedCheckBoxList.size();
                     notSelectedCheckBoxList.remove(n - 1);
                 }
 
@@ -1107,6 +1136,13 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
                 printSelectionList(selectedCheckBoxList);
                 Log.v(TAG, "This is the not selected checkbox list:");
                 printSelectionList(notSelectedCheckBoxList);
+
+                if (selectedCheckBoxList.contains(preExistingConditionsYes)) {
+                    int n = selectedCheckBoxList.size();
+                    selectedCheckBoxList.remove(n - 1);
+                    n = notSelectedCheckBoxList.size();
+                    notSelectedCheckBoxList.remove(n - 1);
+                }
 
                 resetCheckBoxOnCancel(preExistingConditionsYes, preExistingConditionsNo);
                 preExistingConditionDialog.cancel();
