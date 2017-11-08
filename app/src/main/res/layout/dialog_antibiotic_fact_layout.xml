@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/factListViewContainer"
         android:layout_width="wrap_content"
-        android:layout_height="700dp"
+        android:layout_height="620dp"
         android:orientation="vertical">
 
         <TextView

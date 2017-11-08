@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">" Antibiotic Or Not"</string>
+    <string name="app_name">"Antibiotic Or Not"</string>
 
     <!-- Text View Labels -->
     <string name="fever_label_text">Fever</string>
@@ -13,7 +13,7 @@
     <string name="post_nasal_drip_label_text">Post Nasal Drip</string>
     <string name="chest_pain_label_text">Chest Pain</string>
     <string name="shortness_of_breath_wheezing_label_text">Shortness of Breath or Wheezing</string>
-    <string name="neck_stiffness_label_text">Neck Stiffness</string>
+    <string name="neck_stiffness_label_text">Neck Stiffness (Inability to touch chin to neck)</string>
     <string name="tender_lymph_nodes">Tender Lymph Nodes</string>
     <string name="headache_label_text">Headache</string>
     <string name="symptoms_time_length_label_text">How long have your symptoms been present?</string>
@@ -105,12 +105,11 @@
 
     <!-- Over The Counter Remedies Dialog -->
     <string name="remedy_list_title_text">Over The Counter Remedies</string>
-    <string name="remedy_1">Wash your nasty Ass!</string>
-    <string name="remedy_2">Eat vegetables.</string>
-    <string name="remedy_3">Don\'t talk to loose women.</string>
-    <string name="remedy_4">Walk an hour a day.</string>
-    <string name="remedy_5">Eat fruit.</string>
-    <string name="remedy_6">Always rember to breath.</string>
+    <string name="remedy_1">Analgesics for headache, body aches, muscle and joint aches.</string>
+    <string name="remedy_2">A combination product containing an antihistamine and decongestant combination or intranasal/inhalation cromolyn may help with nasal symptoms.</string>
+    <string name="remedy_3">Application of topical saline to nasal cavity will temporarily help with nasal congestion.</string>
+    <string name="remedy_4">Cough may be treated with dextromethorphan.</string>
+    <string name="remedy_5">Stay well hydrated and ingest warm fluids.</string>
     <string name="remedy_button_text">OTC Remedies</string>
 
     <string-array name="remedy_array">
@@ -119,7 +118,6 @@
         <item>@string/remedy_3</item>
         <item>@string/remedy_4</item>
         <item>@string/remedy_5</item>
-        <item>@string/remedy_6</item>
     </string-array>
 
 </resources>

@@ -63,8 +63,10 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                createFeverDialog();
+
                 addCheckBox(feverYes, feverNo, selectedCheckBoxList, notSelectedCheckBoxList);
+                ;
+                createFeverDialog();
 
             }
         });
@@ -680,7 +682,6 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
     private Dialog createResultNoDialog() {
         final Dialog resultNoDialog = new Dialog(this);
         resultNoDialog.setContentView(R.layout.dialog_result_no_layout);
-        resultNoDialog.setTitle("You Do Not Need An Antibiotic!");
         resultNoDialog.show();
 
         Button doneButton, remedyButton;
@@ -703,13 +704,15 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
         remedyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createOTCRemediesDialog();
+
                 resultNoDialog.dismiss();
+                createOTCRemediesDialog();
             }
         });
 
         return resultNoDialog;
     }
+
 
     private Dialog createAntibioticFactDialog() {
         final Dialog antibioticFactDialog = new Dialog(this);
@@ -757,6 +760,7 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
         return antibioticFactDialog;
     }
 
+
     private Dialog createResultYesDialog() {
         final Dialog resultYesAntibioticDialog = new Dialog(this);
         resultYesAntibioticDialog.setContentView(R.layout.dialog_result_yes_layout);
@@ -780,12 +784,13 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
         return resultYesAntibioticDialog;
     }
 
+
     private Dialog createOTCRemediesDialog() {
         final Dialog remedyDialog = new Dialog(this);
         remedyDialog.setContentView(R.layout.dialog_remedy_layout);
         remedyDialog.show();
 
-        Toast.makeText(this, "Please scroll down to see all the OTC remedies.", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "Please scroll down to see all the OTC remedies.", Toast.LENGTH_SHORT).show();
 
         // Create a string array and populate it with the string array from the "string.xml" file
         String[] remedyArray = getResources().getStringArray(R.array.remedy_array);
@@ -816,7 +821,7 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Log.v(TAG, "Done Button from Result Yes Dialog was Clicked!");
+                Log.v(TAG, "Done Button from OTC Remedy Dialog was Clicked!");
 
                 remedyDialog.dismiss();
                 createAntibioticFactDialog();
@@ -873,7 +878,8 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
                         Check to make sure "feverYes" is not the only item selected.
                         Remove the added CheckBoxes from both the "selected" and
                             "notSelected" lists if "feverYes" and/or a fever range are selected.
-                 */
+                */
+
                 if (selectedCheckBoxList.contains(feverYes) && (selectedCheckBoxList.contains(lowFeverRange) || selectedCheckBoxList.contains(highFeverRange))) {
 
                     for (int i = 1, n = selectedCheckBoxList.size(), m = notSelectedCheckBoxList.size(); i < 3; i++) {
