@@ -13,11 +13,11 @@
     <string name="post_nasal_drip_label_text">Post Nasal Drip</string>
     <string name="chest_pain_label_text">Chest Pain</string>
     <string name="shortness_of_breath_wheezing_label_text">Shortness of Breath or Wheezing</string>
-    <string name="neck_stiffness_label_text">Neck Stiffness (Inability to touch chin to neck)</string>
+    <string name="neck_stiffness_label_text">Neck Stiffness (inability to touch chin to neck)</string>
     <string name="tender_lymph_nodes">Tender Lymph Nodes</string>
     <string name="headache_label_text">Headache</string>
     <string name="symptoms_time_length_label_text">How long have your symptoms been present?</string>
-    <string name="pre_existing_conditions_label_text">Pre-existing Conditions</string>
+    <string name="pre_existing_conditions_label_text">Pre-existing Conditions (medical problems)</string>
 
     <!-- Checkbox Selections Yes or No -->
     <string name="yes">Yes</string>
@@ -71,17 +71,17 @@
     <string name="fact_three">The common cold is differentiated from viral or allergic nasal inflammation by the presence of sore throat and cough.</string>
     <string name="fact_four">The common cold can be differentiated from bacterial tonsillitis (pharyngitis or tonsil infection) by the presence of runny nose and nasal congestion.</string>
     <string name="fact_five">No antibiotics are needed to treat the common cold.</string>
-    <string name="fact_six">Pharyngitis (infection of the throat and glands) symptoms include sore throat, fever, fatigue, swollen neck glands, and with or without watch patches in the back of the throat. Usually pharyngitis requires antibiotics.</string>
+    <string name="fact_six">Pharyngitis (infection of the throat and glands) symptoms include sore throat, fever, fatigue, swollen neck glands, and with or without white patches in the back of the throat. Usually pharyngitis requires antibiotics.</string>
     <string name="fact_seven">If there is no fever but there is a cough with pharyngitis symptoms, no antibiotics are needed.</string>
     <string name="fact_eight">The common cold can cause and lead to sinusitis, lower respiratory tract infection, asthma exacerbation and ear infections.</string>
     <string name="fact_nine">Acute sinusitis includes symptoms of facial pain, clear or yellow-green nasal discharge, nasal obstruction.</string>
     <string name="fact_ten">The most common cause of acute sinusitis is viral infections. Therefore no antibiotics are recommended unless patient has fever  greater than or equal to 102 or other risk factors.</string>
     <string name="fact_eleven">Acute viral sinusitis is expected to improve within 10 days without the use of antibiotics. Nasal discharge starts clear in viral sinusitis but may turn yellow-green later in the illness.</string>
     <string name="fact_twelve">Acute bacterial sinusitis lasts longer than 10 days, causes high fevers (>102), and nasal discharge is yellow-green within the first 3 days of illness.</string>
-    <string name="fact_thirteen">Acute bronchitis includes cough, sputum production and lasts at least 5 days. Wheezing and shortness of breath are also symptoms of acute bronchitis.</string>
-    <string name="fact_fourteen">Influenza symptoms include high fever, cough, headache. muscle and body aches. Antivirals are recommended to treat influenza.</string>
+    <string name="fact_thirteen">Acute bronchitis includes cough, sputum (mucous from respiratory tract) and lasts at least 5 days. Wheezing and shortness of breath are also symptoms of acute bronchitis.</string>
+    <string name="fact_fourteen">Influenza symptoms include high fever, cough, headache, muscle and body aches. Antivirals are recommended to treat influenza.</string>
     <string name="fact_fifteen">Pertussis is similar to the common cold but has prolonged coughing and will require antibiotics.</string>
-    <string name="fact_sixteen">The majority of upper respiratory infections are transmitted by hand contact. Viruses remain alive on human skin for 2 hrs. therefore hand washing is important to prevent the spread of disease.</string>
+    <string name="fact_sixteen">The majority of upper respiratory infections are transmitted by hand contact. Viruses remain alive on human skin for 2 hours. Therefore hand washing is important to prevent the spread of disease.</string>
 
     <!-- A string array to hold all the facts -->
     <string-array name="fact_array">
