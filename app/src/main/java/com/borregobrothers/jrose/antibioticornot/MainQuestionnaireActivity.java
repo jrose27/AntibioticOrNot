@@ -18,7 +18,7 @@ import java.util.ArrayList;
         Date: October 2017
         Class is for the main activity of the antibiotic awareness app.
         It contains six dialogs implemented in methods and after the onCreate method.
-        The onCreate methods contains all listener methods for the checkboxes selected.
+        The onCreate methods contains all listener methods for the checkboxes of the main questionnaire.
  */
 public class MainQuestionnaireActivity extends AppCompatActivity {
 
@@ -719,7 +719,7 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
         antibioticFactDialog.setContentView(R.layout.dialog_antibiotic_fact_layout);
         antibioticFactDialog.show();
 
-        Toast.makeText(this, "Please scroll down to see all facts.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Please scroll down to see all facts.", Toast.LENGTH_LONG).show();
 
         // Create a string array and populate it with the string array from the "string.xml" file
         String[] factArray = getResources().getStringArray(R.array.fact_array);
