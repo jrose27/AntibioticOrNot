@@ -82,6 +82,8 @@
     <string name="fact_fourteen">Influenza symptoms include high fever, cough, headache, muscle and body aches. Antivirals are recommended to treat influenza.</string>
     <string name="fact_fifteen">Pertussis is similar to the common cold but has prolonged coughing and will require antibiotics.</string>
     <string name="fact_sixteen">The majority of upper respiratory infections are transmitted by hand contact. Viruses remain alive on human skin for 2 hours. Therefore hand washing is important to prevent the spread of disease.</string>
+    <string name="fact_seventeen">Antibiotics are not indicated for cold, flu, bronchitis, most coughs, most sore throats, some ear infections, some sinus infections, and stomach flu.</string>
+    <string name="fact_eighteen">Unnecessary use of antibiotics creates resistant bacteria/superbugs that are hard to treat and cause approximately 23,000 per year in the U.S.</string>
 
     <!-- A string array to hold all the facts -->
     <string-array name="fact_array">
@@ -101,6 +103,8 @@
         <item>@string/fact_fourteen</item>
         <item>@string/fact_fifteen</item>
         <item>@string/fact_sixteen</item>
+        <item>@string/fact_seventeen</item>
+        <item>@string/fact_eighteen</item>
     </string-array>
 
     <!-- Over The Counter Remedies Dialog -->

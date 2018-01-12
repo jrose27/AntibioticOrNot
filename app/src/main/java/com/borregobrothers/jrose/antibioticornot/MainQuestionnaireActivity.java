@@ -17,7 +17,7 @@ import java.util.ArrayList;
         Author: John Rose
         Date: October 2017
         Class is for the main activity of the antibiotic awareness app.
-        It contains six dialogs implemented in methods and after the onCreate method.
+        It contains six dialogs implemented in methods.
         The onCreate methods contains all listener methods for the checkboxes of the main questionnaire.
  */
 public class MainQuestionnaireActivity extends AppCompatActivity {
@@ -65,7 +65,6 @@ public class MainQuestionnaireActivity extends AppCompatActivity {
 
 
                 addCheckBox(feverYes, feverNo, selectedCheckBoxList, notSelectedCheckBoxList);
-                ;
                 createFeverDialog();
 
             }
